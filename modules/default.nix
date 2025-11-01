@@ -3,8 +3,8 @@
 with lib; 
 
 {
-	imports = [
-		./dev-tools.nix
+  imports = [
+    ./dev-tools.nix
     ./i3
-	];
+  ];
 }
