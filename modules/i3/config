@@ -60,6 +60,9 @@ bindsym $mod+Shift+q kill
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec "rofi -modi drun,run -show drun"
+bindsym $mod+p exec "~/.config/rofi/scripts/repos-rofi.sh"
+bindsym $mod+t exec "~/.config/rofi/scripts/tmux-rofi.sh"
+bindsym $mod+g exec "~/.config/rofi/scripts/github-rofi.sh"
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -201,8 +204,6 @@ bar {
 bindsym Mod1+0x5b mode "resize"
 
 for_window [class="Pavucontrol"] floating enable, resize set 400px 240px, move position 2140px 40px
-
-exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # SET GAPS
 gaps inner 6

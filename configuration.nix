@@ -1,23 +1,24 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ 
-      /etc/nixos/hardware-configuration.nix
-  	  ./modules
-    ];
+  imports = [
+    /etc/nixos/hardware-configuration.nix
+    ./modules
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
-  networking.extraHosts = ''
-  '';
+  networking.extraHosts = '''';
 
-	virtualisation.vmware.host.enable = true; 
+  virtualisation.vmware.host.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   time.timeZone = "America/Sao_Paulo";
 
@@ -54,13 +55,17 @@
   };
 
   # Enable docker.
- virtualisation.docker.enable = true; 
+  virtualisation.docker.enable = true;
 
   users.users.carlos = {
     isNormalUser = true;
     description = "carlos";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
-		shell = pkgs.fish;
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
+    shell = pkgs.fish;
     packages = with pkgs; [
       tree
     ];
@@ -71,7 +76,7 @@
   programs.fish.enable = true;
 
   nixpkgs.config.permittedInsecurePackages = [
-     "beekeeper-studio-5.3.4"
+    "beekeeper-studio-5.3.4"
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -79,11 +84,11 @@
   environment.systemPackages = with pkgs; [
     neovim
     wget
-    git 
-    unzip 
-    gzip 
+    git
+    unzip
+    gzip
     tmux
-    google-chrome 
+    google-chrome
     kitty
     discord
     direnv
@@ -97,7 +102,7 @@
     tmuxinator
     picom
     pavucontrol
-		nixfmt
+    nixfmt
   ];
 
   services.openssh.enable = true;

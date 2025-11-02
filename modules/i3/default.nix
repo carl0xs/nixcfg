@@ -19,26 +19,26 @@
 
   environment.systemPackages = with pkgs; [
     i3status
-    i3blocks  
-    
+    i3blocks
+
     rofi
     rofi-power-menu
-    
+
     maim
     xclip
-    
+
     pavucontrol
-    pulseaudio  
-    
+    pulseaudio
+
     feh
-    
+
     i3-resurrect
-    
+
     xss-lock
     i3lock
-    
+
     networkmanagerapplet
-    
+
     polybar
   ];
 
@@ -50,5 +50,9 @@
 
   programs.dconf.enable = true;
 
-  users.users.carlos.extraGroups = [ "video" "audio" "networkmanager" ];
+  users.users.carlos.extraGroups = [
+    "video"
+    "audio"
+    "networkmanager"
+  ];
 }
