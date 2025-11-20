@@ -198,7 +198,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 
 bar {
-  status_command i3status
+  status_command i3status-rs
 }
 
 bindsym Mod1+0x5b mode "resize"

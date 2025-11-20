@@ -20,6 +20,7 @@
   environment.systemPackages = with pkgs; [
     i3status
     i3blocks
+    i3status-rust
 
     rofi
     rofi-power-menu
@@ -38,8 +39,7 @@
     i3lock
 
     networkmanagerapplet
-
-    polybar
+    
   ];
 
   services.pipewire = {

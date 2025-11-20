@@ -11,7 +11,9 @@
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
-  networking.extraHosts = '''';
+  networking.extraHosts = ''
+    127.0.0.1 local.locavibe.com.br
+  '';
 
   virtualisation.vmware.host.enable = true;
 

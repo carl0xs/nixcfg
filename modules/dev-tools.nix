@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     rustup
+		rust-analyzer
     nodejs_22
     nodePackages.pnpm
     nodePackages.typescript-language-server
@@ -16,5 +17,7 @@
     ripgrep
     fzf
     mongodb-compass
+    bat
+		luarocks
   ];
 }
