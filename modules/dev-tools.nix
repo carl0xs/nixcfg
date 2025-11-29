@@ -19,5 +19,6 @@
     mongodb-compass
     bat
 		luarocks
+		ruby-lsp
   ];
 }

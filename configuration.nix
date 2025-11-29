@@ -108,6 +108,11 @@
   ];
 
   services.openssh.enable = true;
+  services = {
+    picom = {
+      enable = true;
+    };
+  };
 
   system.stateVersion = "25.05";
 }
