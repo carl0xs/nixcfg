@@ -76,6 +76,7 @@
   users.defaultUserShell = pkgs.fish;
   programs.firefox.enable = true;
   programs.fish.enable = true;
+  programs.nix-ld.enable = true;
 
   nixpkgs.config.permittedInsecurePackages = [
     "beekeeper-studio-5.3.4"
