@@ -22,5 +22,6 @@
       ruby
       ruby-lsp
       elixir
-      ];
+      zoxide
+    ];
 }
