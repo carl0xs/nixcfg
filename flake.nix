@@ -1,48 +1,52 @@
 {
-  description = "Flake configuration of Hsolrac";
+  description = "NixOS configuration for multiple hosts";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
-  outputs =
+  outputs = { self, nixpkgs, rust-overlay }:
+    let
+      system = "x86_64-linux";
+      specialArgs = {
+        # Pass inputs to modules
+        inherit rust-overlay;
+      };
+    in
     {
-      self,
-      nixpkgs,
-      flake-utils,
-      rust-overlay,
-    }:
-    flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        overlays = [ (import rust-overlay) ];
-        pkgs = import nixpkgs {
-          inherit system overlays;
-        };
-      in
-      {
-        devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            nixpkgs-fmt
-            rust-bin.beta.latest.default
-            nodejs_22
-            nodePackages.pnpm
-            nodePackages.typescript-language-server
+      nixosConfigurations = {
+        notebook = nixpkgs.lib.nixosSystem {
+          inherit system;
+          inherit specialArgs;
+          modules = [
+            ./hosts/notebook/default.nix
+            ./hosts/notebook/hardware-configuration.nix
           ];
         };
-      }
-    )
-    // {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./configuration.nix
-        ];
+
+        homeserver = nixpkgs.lib.nixosSystem {
+          inherit system;
+          inherit specialArgs;
+          modules = [
+            ./hosts/homeserver/default.nix
+            ./hosts/homeserver/hardware-configuration.nix
+          ];
+        };
       };
+
+      devShells.${system}.default =
+        let
+          overlays = [ (import rust-overlay) ];
+          pkgs = import nixpkgs {
+            inherit system overlays;
+          };
+        in
+        pkgs.mkShell {
+          buildInputs = with pkgs; [
+            nixpkgs-fmt
+            nodejs_22
+          ];
+        };
     };
 }

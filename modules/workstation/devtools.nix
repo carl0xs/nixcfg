@@ -2,7 +2,8 @@
 
 {
   environment.systemPackages = with pkgs; [
-    rustup
+      neovim
+      rustup
       rust-analyzer
       nodejs_22
       nodePackages.pnpm
@@ -23,5 +24,6 @@
       ruby-lsp
       elixir
       zoxide
+      tmux
     ];
 }
