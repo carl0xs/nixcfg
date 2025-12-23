@@ -4,7 +4,7 @@
   imports = [
 
     # Common modules
-    ../../modules/common/base.nix
+    ../../modules/common/default.nix
     ../../modules/common/locale.nix
     ../../modules/common/users.nix
     ../../modules/common/ssh.nix

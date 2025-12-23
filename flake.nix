@@ -10,7 +10,6 @@
     let
       system = "x86_64-linux";
       specialArgs = {
-        # Pass inputs to modules
         inherit rust-overlay;
       };
     in
@@ -27,7 +26,6 @@
 
         homeserver = nixpkgs.lib.nixosSystem {
           inherit system;
-          inherit specialArgs;
           modules = [
             ./hosts/homeserver/default.nix
             ./hosts/homeserver/hardware-configuration.nix
