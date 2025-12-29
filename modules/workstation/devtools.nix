@@ -20,10 +20,10 @@
       mongodb-compass
       bat
       luarocks
-      ruby
-      ruby-lsp
       elixir
       zoxide
       tmux
+      devbox
+      pcmanfm
     ];
 }
