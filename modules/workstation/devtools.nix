@@ -25,5 +25,7 @@
       tmux
       devbox
       pcmanfm
+      lazygit
+      lua-language-server
     ];
 }
