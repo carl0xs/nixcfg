@@ -9,6 +9,14 @@
     variant = "thinkpad";
   };
 
+	fonts = {
+		enableDefaultPackages = true;
+
+		packages = with pkgs; [
+			nerd-fonts.fira-code
+		];
+	};
+
   # Sound
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
