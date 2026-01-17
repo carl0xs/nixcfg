@@ -2,10 +2,6 @@
 
 {
 
-  networking.extraHosts = ''
-    127.0.0.1 local.locavibe.com.br
-  '';
-
   # X Server
   services.xserver.enable = true;
   services.xserver.xkb = {
