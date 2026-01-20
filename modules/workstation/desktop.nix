@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, extraHostsFromEnv, ... }:
 
 {
 
@@ -9,6 +9,8 @@
     variant = "thinkpad";
   };
 
+  networking.extraHosts = extraHostsFromEnv;
+
 	fonts = {
 		enableDefaultPackages = true;
 
@@ -16,6 +18,8 @@
 			nerd-fonts.fira-code
 		];
 	};
+
+  nix.settings.trusted-users = [ "root" "carlos" ];
 
   # Sound
   services.pulseaudio.enable = false;
@@ -60,6 +64,8 @@
     feh
     picom
     pavucontrol
+    shared-mime-info
+    direnv
     # i3 will be handled in its own module
   ];
 }

@@ -18,6 +18,9 @@
         notebook = nixpkgs.lib.nixosSystem {
           inherit system;
           inherit specialArgs;
+          specialArgs = {
+            extraHostsFromEnv = builtins.getEnv "EXTRA_HOSTS" "";
+          };
           modules = [
             ./hosts/notebook/default.nix
             ./hosts/notebook/hardware-configuration.nix

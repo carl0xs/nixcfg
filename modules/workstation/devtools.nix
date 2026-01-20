@@ -5,7 +5,6 @@
       neovim
       rustup
       rust-analyzer
-      nodejs_22
       nodePackages.pnpm
       nodePackages.typescript-language-server
       gnumake
