@@ -1,26 +1,30 @@
 {
-  description = "NixOS configuration for multiple hosts";
-
+  description = "NixOS configuration Carl0xs";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    rust-overlay.url = "github:oxalica/rust-overlay";
+    flake-utils.url = "github:numtide/flake-utils";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, rust-overlay }:
+  outputs = { self, nixpkgs, flake-utils, nixvim }@inputs:
     let
       system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
       specialArgs = {
-        inherit rust-overlay;
+        inherit inputs;
+        extraHostsFromEnv = builtins.getEnv "EXTRA_HOSTS";
       };
     in
     {
+      formatter.${system} = pkgs.nixpkgs-fmt;
+
       nixosConfigurations = {
         notebook = nixpkgs.lib.nixosSystem {
           inherit system;
-          inherit specialArgs;
-          specialArgs = {
-            extraHostsFromEnv = builtins.getEnv "EXTRA_HOSTS" "";
-          };
+          specialArgs = specialArgs;
           modules = [
             ./hosts/notebook/default.nix
             ./hosts/notebook/hardware-configuration.nix
@@ -35,19 +39,5 @@
           ];
         };
       };
-
-      devShells.${system}.default =
-        let
-          overlays = [ (import rust-overlay) ];
-          pkgs = import nixpkgs {
-            inherit system overlays;
-          };
-        in
-        pkgs.mkShell {
-          buildInputs = with pkgs; [
-            nixpkgs-fmt
-            nodejs_22
-          ];
-        };
     };
 }
