@@ -9,12 +9,13 @@ let
       extraPackages = with pkgs; [
         ripgrep
         lazygit
+        fd
       ];
 
       globals.mapleader = " ";
       keymaps = [
-        { key = "<leader>e"; action = "<cmd>Vex<CR>"; }
-        { key = "C-s"; action = "<cmd>:w!<CR>"; }
+					{ key = "<leader>e"; action = "<cmd>Vex<CR>"; }
+        { key = "<C-s>"; action = "<cmd>:w!<CR>"; }
 
         { key = "[b"; action = "<cmd>bprevious<CR>"; }
         { key = "]b"; action = "<cmd>bnext<CR>"; }
@@ -36,6 +37,17 @@ let
         relativenumber = true;
         scrolloff = 8;
         sidescrolloff = 8;
+        autoindent = true;
+        clipboard= "unnamedplus";
+        ts = 2; 
+        sw = 2;
+        undofile = true;
+        completeopt = "longest,menuone";
+        encoding= "utf-8";
+        fileencoding = "utf-8";
+        foldmethod = "expr";         
+        foldlevelstart = 99;
+        termguicolors = true;
       };
 
       # Colorscheme
@@ -46,6 +58,8 @@ let
         gitsigns.enable = true;
         fzf-lua.enable = true;
         bufferline.enable = true;
+				lualine.enable = true;
+
         # LSP
         lsp = {
           enable = true;
@@ -67,7 +81,7 @@ let
   };
 
   # Wrapper to run nixvim as 'nvim-nix'
-  nvim-nix = pkgs.writeShellScriptBin "nvim-nix" ''
+  nvim-nix = pkgs.writeShellScriptBin "nixvim" ''
     exec ${nvim-nixvim}/bin/nvim "$@"
   '';
 in
