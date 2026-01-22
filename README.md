@@ -1,5 +1,9 @@
 # nixcfg
 
+
+<img width="1918" height="1080" alt="image" src="https://github.com/user-attachments/assets/69952df8-cffd-4c49-b3c7-a18fb16fbd73" />
+
+
 NixOS configuration files for my personal machines.
 
 ## What is NixOS?
