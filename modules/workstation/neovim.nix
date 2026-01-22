@@ -56,9 +56,26 @@ let
       # Plugins
       plugins = {
         gitsigns.enable = true;
-        fzf-lua.enable = true;
+        fzf-lua = { 
+          enable = true;
+
+          settings = {
+            winopts = {
+              height = 0.40;
+              width = 1.00;
+              row = 1.00;
+              col = 0.00;
+              border = "none";
+              fullscreen = false;
+            };
+            fzf_opts = {
+              "--layout" = "reverse-list";
+            };
+          };
+        };
         bufferline.enable = true;
 				lualine.enable = true;
+        diffview.enable = true;
 
         # LSP
         lsp = {
