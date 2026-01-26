@@ -10,6 +10,11 @@ let
         ripgrep
         lazygit
         fd
+        ruby-lsp
+        elixir-ls
+        gcc
+        nodejs
+        tree-sitter
       ];
 
       globals.mapleader = " ";
@@ -83,7 +88,15 @@ let
           servers = {
             rust_analyzer.enable = true;
             elixirls.enable = true;
-            solargraph.enable = true;
+            ruby_lsp = {
+              enable = true;
+              cmd = [ "ruby-lsp" ];
+              filetypes = [ "ruby" "eruby" ];
+              rootMarkers = [
+                "Gemfile"
+                "Rakefile"
+              ];
+            };
             ts_ls.enable = true;
             eslint.enable = true;
             nil_ls.enable = true;
@@ -92,8 +105,129 @@ let
         };
         treesitter = {
           enable = true;
+          nixGrammars = true;
+          folding = {
+            enable = true;
+          };
+          highlight = {
+            enable = true;
+          };
+          indent = {
+            enable = true;
+          };
+          grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+            ruby
+            elixir
+            heex
+            eex
+            html
+            css
+            javascript
+            typescript
+            json
+            yaml
+            markdown
+            markdown_inline
+            lua
+            vim
+            vimdoc
+            bash
+            sql
+            dockerfile
+            gitignore
+            regex
+            toml
+            xml
+            nix
+          ];
         };
       };
+
+      # LSP e completion
+      plugins.cmp = {
+        enable = true;
+        settings = {
+          sources = [
+            { name = "nvim_lsp"; }
+            { name = "path"; }
+            { name = "buffer"; }
+          ];
+          mapping = {
+            "<C-Space>" = "cmp.mapping.complete()";
+            "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+            "<C-f>" = "cmp.mapping.scroll_docs(4)";
+            "<C-e>" = "cmp.mapping.close()";
+            "<Tab>" = "cmp.mapping.select_next_item()";
+            "<S-Tab>" = "cmp.mapping.select_prev_item()";
+            "<CR>" = "cmp.mapping.confirm({ select = true })";
+          };
+        };
+      };
+
+      extraConfigLua = ''
+        local lsp = vim.lsp
+        
+        local signs = {
+          Error = "✗",
+          Warn = "⚠",
+          Hint = "💡",
+          Info = "ℹ"
+        }
+        
+        
+        lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {
+          border = "rounded",
+        })
+        
+        lsp.handlers["textDocument/signatureHelp"] = lsp.with(vim.lsp.handlers.signature_help, {
+          border = "rounded",
+        })
+        
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+        
+        for _, server in pairs(vim.lsp.get_clients()) do
+          server.server_capabilities = vim.tbl_deep_extend('force', server.server_capabilities, capabilities)
+        end
+        
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          pattern = "*.rb",
+          callback = function()
+            vim.lsp.buf.format({ async = false })
+          end,
+        })
+        
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          pattern = "*.ex",
+          callback = function()
+            vim.lsp.buf.format({ async = false })
+          end,
+        })
+        
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          pattern = "*.heex",
+          callback = function()
+            vim.lsp.buf.format({ async = false })
+          end,
+        })
+        
+        vim.api.nvim_create_autocmd("FileType", {
+          pattern = "ruby",
+          callback = function()
+            vim.opt_local.tabstop = 2
+            vim.opt_local.shiftwidth = 2
+            vim.opt_local.expandtab = true
+          end,
+        })
+        
+        vim.api.nvim_create_autocmd("FileType", {
+          pattern = "elixir",
+          callback = function()
+            vim.opt_local.tabstop = 2
+            vim.opt_local.shiftwidth = 2
+            vim.opt_local.expandtab = true
+          end,
+        })
+      '';
     };
   };
 

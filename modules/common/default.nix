@@ -18,6 +18,7 @@
     unzip
     gzip
     vim
+    cmake
   ];
 
   system.stateVersion = "25.05";
