@@ -16,4 +16,10 @@
 
   # Override common hostname for this specific host
   networking.hostName = "homeserver";
+
+  # Legacy BIOS bootloader (most Dell 1st-gen i5 boxes are BIOS-only)
+  boot.loader.systemd-boot.enable = false;
+  boot.loader.efi.canTouchEfiVariables = false;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
 }
