@@ -51,21 +51,5 @@
     "beekeeper-studio-5.5.3"
   ];
 
-  # Packages for a graphical environment
-  environment.systemPackages = with pkgs; [
-    google-chrome
-    kitty
-    discord
-    postman
-    libreoffice
-    maim
-    flameshot
-    xclip
-    feh
-    picom
-    pavucontrol
-    shared-mime-info
-    direnv
-    # i3 will be handled in its own module
-  ];
+  # Packages for a graphical environment are managed by Home Manager.
 }

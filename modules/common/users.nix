@@ -9,8 +9,5 @@
       "wheel"
       "docker"
     ];
-    packages = with pkgs; [
-      tree
-    ];
   };
 }

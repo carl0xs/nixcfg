@@ -1,6 +1,13 @@
-{ config, pkgs, extraHostsFromEnv, ... }:
+{ config, pkgs, extraHostsFromEnv, inputs, ... }:
 
 {
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs; };
+    users.carlos = import ../../home/carlos/notebook.nix;
+  };
+
   imports = [
 
     # Common modules
@@ -13,7 +20,6 @@
     ../../modules/workstation/desktop.nix
     ../../modules/workstation/devtools.nix
     ../../modules/workstation/i3
-    ../../modules/workstation/neovim.nix
 
     # The old top-level modules directory
     # is now replaced by the new structure.
