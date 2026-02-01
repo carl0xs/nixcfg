@@ -46,8 +46,6 @@
     lazygit
     lua-language-server
     xorg.xrandr
-    i3status
-    i3blocks
     i3status-rust
     rofi
     rofi-power-menu

@@ -18,8 +18,8 @@
     ../../modules/common/ssh.nix
 
     # Workstation modules
-    ../../modules/workstation/desktop.nix
-    ../../modules/workstation/i3
+    ./desktop.nix
+    ./i3
 
     # The old top-level modules directory
     # is now replaced by the new structure.

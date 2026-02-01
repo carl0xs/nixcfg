@@ -39,11 +39,8 @@
     enable = true;
   };
 
-  users.defaultUserShell = pkgs.fish;
-
   # GUI Programs
   programs.firefox.enable = true;
-  programs.fish.enable = true;
   programs.nix-ld.enable = true;
 
   nixpkgs.config.allowUnfree = true;

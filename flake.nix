@@ -2,7 +2,6 @@
   description = "NixOS configuration Carl0xs";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,7 +12,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils, home-manager, nixvim }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixvim }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
