@@ -2,6 +2,9 @@
 
 {
   imports = [
+    ./fish.nix
+    ./i3.nix
+    ./kitty.nix
     ./nvim.nix
   ];
 
@@ -26,6 +29,7 @@
     jq
     ripgrep
     fzf
+    rsync
     mongodb-compass
     bat
     luarocks
@@ -36,9 +40,9 @@
     pcmanfm
     lazygit
     lua-language-server
+    xorg.xrandr
 
     google-chrome
-    kitty
     discord
     postman
     libreoffice

@@ -5,6 +5,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
+    backupFileExtension = "hm-bak";
     users.carlos = import ../../home/carlos/notebook.nix;
   };
 
