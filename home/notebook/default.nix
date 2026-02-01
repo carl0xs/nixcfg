@@ -4,8 +4,8 @@
   imports = [
     ./fish.nix
     ./git.nix
-    ./i3status-rs.nix
     ./i3.nix
+    ./i3status-rs.nix
     ./kitty.nix
     ./nvim.nix
     ./rofi.nix
@@ -22,6 +22,8 @@
     tree
 
     rustup
+    nodePackages.pnpm
+    nodePackages.typescript-language-server
     gnumake
     docker
     docker-compose
@@ -36,11 +38,24 @@
     mongodb-compass
     bat
     luarocks
+    elixir
     zoxide
     tmux
+    devbox
     pcmanfm
     lazygit
+    lua-language-server
     xorg.xrandr
+    i3status
+    i3blocks
+    i3status-rust
+    rofi
+    rofi-power-menu
+    i3-resurrect
+    xss-lock
+    i3lock
+    networkmanagerapplet
+    alsa-utils
 
     google-chrome
     discord

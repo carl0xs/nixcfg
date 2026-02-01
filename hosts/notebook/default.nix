@@ -6,7 +6,7 @@
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
     backupFileExtension = "hm-bak";
-    users.carlos = import ../../home/carlos/notebook.nix;
+    users.carlos = import ../../home/notebook/default.nix;
   };
 
   imports = [
@@ -19,7 +19,6 @@
 
     # Workstation modules
     ../../modules/workstation/desktop.nix
-    ../../modules/workstation/devtools.nix
     ../../modules/workstation/i3
 
     # The old top-level modules directory

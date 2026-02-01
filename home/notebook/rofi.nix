@@ -16,7 +16,7 @@
   home.file.".config/rofi/scripts/github-rofi.sh" = {
     executable = true;
     text = ''
-			!/usr/bin/env bash
+#!/usr/bin/env bash
 
 			USER="carl0xs"
 			URL="https://github.com/$USER/"
