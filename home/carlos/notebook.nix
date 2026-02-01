@@ -3,9 +3,13 @@
 {
   imports = [
     ./fish.nix
+    ./git.nix
+    ./i3status-rs.nix
     ./i3.nix
     ./kitty.nix
     ./nvim.nix
+    ./rofi.nix
+    ./tmux.nix
   ];
 
   home.username = "carlos";
@@ -18,8 +22,6 @@
     tree
 
     rustup
-    nodePackages.pnpm
-    nodePackages.typescript-language-server
     gnumake
     docker
     docker-compose
@@ -29,17 +31,15 @@
     jq
     ripgrep
     fzf
+    curl
     rsync
     mongodb-compass
     bat
     luarocks
-    elixir
     zoxide
     tmux
-    devbox
     pcmanfm
     lazygit
-    lua-language-server
     xorg.xrandr
 
     google-chrome
