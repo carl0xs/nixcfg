@@ -20,38 +20,29 @@
 
   home.packages = with pkgs; [
     tree
-
-    rustup
-    nodePackages.pnpm
-    nodePackages.typescript-language-server
     gnumake
+    gcc
+
     docker
     docker-compose
+
     beekeeper-studio
+    mongodb-compass
     usql
-    gcc
+
+
     jq
     ripgrep
     fzf
     curl
     rsync
-    mongodb-compass
     bat
-    luarocks
-    elixir
-    zoxide
-    tmux
-    devbox
-    pcmanfm
     lazygit
-    lua-language-server
+
+    zoxide
+    pcmanfm
     xorg.xrandr
-    i3status-rust
-    rofi
-    rofi-power-menu
-    i3-resurrect
     xss-lock
-    i3lock
     networkmanagerapplet
     alsa-utils
 
@@ -63,7 +54,6 @@
     flameshot
     xclip
     feh
-    picom
     pavucontrol
     shared-mime-info
     direnv
