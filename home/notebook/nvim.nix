@@ -13,11 +13,13 @@
       ripgrep
       lazygit
       fd
-      ruby-lsp
-      elixir-ls
       gcc
       nodejs
       tree-sitter
+
+      solargraph
+      elixir-ls
+			lua-language-server
     ];
 
     globals.mapleader = " ";
@@ -38,6 +40,9 @@
       { key = "<leader>fg"; action = "<cmd>FzfLua grep_project<CR>"; }
       { key = "<leader>gs"; action = "<cmd>FzfLua git_status<CR>"; }
       { key = "<leader>gb"; action = "<cmd>Gitsigns toggle_current_line_blame<CR>"; }
+
+
+      { key = "<leader>nh"; action = "<cmd>Gitsigns next_hunk<CR>"; }
     ];
 
     opts = {
@@ -61,6 +66,7 @@
     colorschemes.gruvbox.enable = true;
 
     plugins = {
+			diffview-nvim.enable = true;
       gitsigns.enable = true;
       fzf-lua = {
         enable = true;
@@ -87,9 +93,9 @@
         servers = {
           rust_analyzer.enable = true;
           elixirls.enable = true;
-          ruby_lsp = {
+          solargraph = {
             enable = true;
-            cmd = [ "ruby-lsp" ];
+            cmd = [ "solargraph" ];
             filetypes = [ "ruby" "eruby" ];
             rootMarkers = [
               "Gemfile"
