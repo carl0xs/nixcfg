@@ -57,5 +57,8 @@
     pavucontrol
     shared-mime-info
     direnv
+
+		btop
+		fastfetch
   ];
 }
