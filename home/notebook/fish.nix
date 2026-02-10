@@ -69,6 +69,11 @@
         xrandr --output eDP-1 --off --output HDMI-1 --primary --auto
       '';
 
+      todos = ''
+        				set -l file_name (date "+%Y-%m-%d.md")
+        				nvim -p ~/.todos/$file_name
+        			'';
+
       nv = ''
         set -l base_dir "$HOME/.config/nvim-labs"
         set -l nvim_dir "$HOME/.config/nvim"

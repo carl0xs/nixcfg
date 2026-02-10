@@ -1,67 +1,65 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.tmux = {
     enable = true;
+    keyMode = "vi";
+    mouse = true;
+    prefix = "C-a";
+    terminal = "tmux-256color";
+    plugins = with pkgs; [
+      tmuxPlugins.cpu
+    ];
     extraConfig = ''
-			set -g @plugin 'tmux-plugins/tmux-cpu'
-			set-option -g set-clipboard on
-			# VIM mode
-			setw -g mode-keys vi
+      			set-option -g set-clipboard on
 
-			# Move between panes with vi keys
-			bind h select-pane -L
-			bind j select-pane -D
-			bind k select-pane -U
-			bind l select-pane -R
+      			# Move between panes with vi keys
+      			bind h select-pane -L
+      			bind j select-pane -D
+      			bind k select-pane -U
+      			bind l select-pane -R
 
-			# Enter copy-mode with vi-style key
-			bind-key [ copy-mode
+      			# Enter copy-mode with vi-style key
+      			bind-key [ copy-mode
 
-			# In copy-mode, use v to begin selection, y to copy
-			bind-key -T copy-mode-vi v send -X begin-selection
-			bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -selection clipboard -in"
+      			# In copy-mode, use v to begin selection, y to copy
+      			bind-key -T copy-mode-vi v send -X begin-selection
+      			bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -selection clipboard -in"
 
-			unbind C-b
-			set -g  prefix C-a
-			set -g mouse on
+      			### Status bar ###
+      			# Fix titlebar
+      			set -g set-titles on
+      			set -g set-titles-string "#T"
 
-			### Status bar ###
-			set -g default-terminal "tmux-256color"
+      			# default statusbar colors
+      			# but a shade darker to show remote
+      			set-option -g status-style "fg=#bdae93,bg=#1c1816"
 
-			# Fix titlebar
-			set -g set-titles on
-			set -g set-titles-string "#T"
+      			# default window title colors
+      			set-window-option -g window-status-style "fg=#bdae93,bg=default"
 
-			# default statusbar colors
-			# but a shade darker to show remote
-			set-option -g status-style "fg=#bdae93,bg=#1c1816"
+      			# active window title colors
+      			set-window-option -g window-status-current-style "fg=#fabd2f,bg=default"
 
-			# default window title colors
-			set-window-option -g window-status-style "fg=#bdae93,bg=default"
+      			# pane border
+      			set-option -g pane-border-style "fg=#3c3836"
+      			set-option -g pane-active-border-style "fg=#504945"
 
-			# active window title colors
-			set-window-option -g window-status-current-style "fg=#fabd2f,bg=default"
+      			# message text
+      			set-option -g message-style "fg=#d5c4a1,bg=#3c3836"
 
-			# pane border
-			set-option -g pane-border-style "fg=#3c3836"
-			set-option -g pane-active-border-style "fg=#504945"
+      			# pane number display
+      			set-option -g display-panes-active-colour "#b8bb26"
+      			set-option -g display-panes-colour "#fabd2f"
 
-			# message text
-			set-option -g message-style "fg=#d5c4a1,bg=#3c3836"
+      			# clock
+      			set-window-option -g clock-mode-colour "#b8bb26"
 
-			# pane number display
-			set-option -g display-panes-active-colour "#b8bb26"
-			set-option -g display-panes-colour "#fabd2f"
+      			# copy mode highligh
+      			set-window-option -g mode-style "fg=#bdae93,bg=#504945"
 
-			# clock
-			set-window-option -g clock-mode-colour "#b8bb26"
-
-			# copy mode highligh
-			set-window-option -g mode-style "fg=#bdae93,bg=#504945"
-
-			# bell
-			set-window-option -g window-status-bell-style "fg=#3c3836,bg=#fb4934"
+      			# bell
+      			set-window-option -g window-status-bell-style "fg=#3c3836,bg=#fb4934"
     '';
   };
 }

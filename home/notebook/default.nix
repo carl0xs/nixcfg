@@ -58,7 +58,8 @@
     shared-mime-info
     direnv
 
-		btop
-		fastfetch
+    btop
+    fastfetch
+    i3status-rust
   ];
 }

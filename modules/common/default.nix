@@ -13,6 +13,8 @@
 
   time.timeZone = "America/Sao_Paulo";
 
+  programs.fish.enable = true;
+
   environment.systemPackages = with pkgs; [
     wget
     git

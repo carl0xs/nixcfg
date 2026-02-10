@@ -9,6 +9,20 @@
     enable = true;
     package = pkgs.neovim-unwrapped;
 
+    extraPlugins = [
+      (pkgs.vimUtils.buildVimPlugin {
+        pname = "gitlineage.nvim";
+        version = "0289681";
+
+        src = pkgs.fetchFromGitHub {
+          owner = "LionyxML";
+          repo = "gitlineage.nvim";
+          rev = "02896814949798551238235cc66693f1c143626d";
+          sha256 = "sha256-BGCE/SosircJu9JDz92JKlMgNw7CEl6BeIDDFEvGWFs=";
+        };
+      })
+    ];
+
     extraPackages = with pkgs; [
       ripgrep
       lazygit
@@ -19,7 +33,7 @@
 
       solargraph
       elixir-ls
-			lua-language-server
+      lua-language-server
     ];
 
     globals.mapleader = " ";
@@ -66,7 +80,7 @@
     colorschemes.gruvbox.enable = true;
 
     plugins = {
-			diffview-nvim.enable = true;
+      diffview-nvim.enable = true;
       gitsigns.enable = true;
       fzf-lua = {
         enable = true;
@@ -164,67 +178,70 @@
     };
 
     extraConfigLua = ''
-      local lsp = vim.lsp
+            require("gitlineage").setup()
+            local lsp = vim.lsp
 
-      local signs = {
-        Error = "✗",
-        Warn = "⚠",
-        Hint = "💡",
-        Info = "ℹ"
-      }
+            local signs = {
+              Error = "✗",
+              Warn = "⚠",
+              Hint = "💡",
+              Info = "ℹ"
+            }
 
-      lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {
-        border = "rounded",
-      })
+            lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {
+              border = "rounded",
+            })
 
-      lsp.handlers["textDocument/signatureHelp"] = lsp.with(vim.lsp.handlers.signature_help, {
-        border = "rounded",
-      })
+            lsp.handlers["textDocument/signatureHelp"] = lsp.with(vim.lsp.handlers.signature_help, {
+              border = "rounded",
+            })
 
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-      for _, server in pairs(vim.lsp.get_clients()) do
-        server.server_capabilities = vim.tbl_deep_extend('force', server.server_capabilities, capabilities)
-      end
+            for _, server in pairs(vim.lsp.get_clients()) do
+              server.server_capabilities = vim.tbl_deep_extend('force', server.server_capabilities, capabilities)
+            end
 
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = "*.rb",
-        callback = function()
-          vim.lsp.buf.format({ async = false })
-        end,
-      })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              pattern = "*.rb",
+              callback = function()
+                vim.lsp.buf.format({ async = false })
+              end,
+            })
 
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = "*.ex",
-        callback = function()
-          vim.lsp.buf.format({ async = false })
-        end,
-      })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              pattern = "*.ex",
+              callback = function()
+                vim.lsp.buf.format({ async = false })
+              end,
+            })
 
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = "*.heex",
-        callback = function()
-          vim.lsp.buf.format({ async = false })
-        end,
-      })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              pattern = "*.heex",
+              callback = function()
+                vim.lsp.buf.format({ async = false })
+              end,
+            })
 
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "ruby",
-        callback = function()
-          vim.opt_local.tabstop = 2
-          vim.opt_local.shiftwidth = 2
-          vim.opt_local.expandtab = true
-        end,
-      })
+            vim.api.nvim_create_autocmd("FileType", {
+              pattern = "ruby",
+              callback = function()
+                vim.opt_local.tabstop = 2
+                vim.opt_local.shiftwidth = 2
+                vim.opt_local.expandtab = true
+              end,
+            })
 
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "elixir",
-        callback = function()
-          vim.opt_local.tabstop = 2
-          vim.opt_local.shiftwidth = 2
-          vim.opt_local.expandtab = true
-        end,
-      })
+            vim.api.nvim_create_autocmd("FileType", {
+              pattern = "elixir",
+              callback = function()
+                vim.opt_local.tabstop = 2
+                vim.opt_local.shiftwidth = 2
+                vim.opt_local.expandtab = true
+              end,
+            })
+
+      			vim.opt.iskeyword:remove("S")
     '';
   };
 }
