@@ -4,12 +4,13 @@
   imports = [
     ./fish.nix
     ./git.nix
-    ./i3.nix
-    ./i3status-rs.nix
+    ./hyprland.nix
     ./kitty.nix
     ./nvim.nix
     ./rofi.nix
     ./tmux.nix
+    ./walker.nix
+    ./waybar.nix
   ];
 
   home.username = "carlos";
@@ -19,18 +20,10 @@
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
+    # Dev tools
     tree
     gnumake
     gcc
-
-    docker
-    docker-compose
-
-    beekeeper-studio
-    mongodb-compass
-    usql
-
-
     jq
     ripgrep
     fzf
@@ -38,28 +31,38 @@
     rsync
     bat
     lazygit
+    direnv
 
-    zoxide
-    pcmanfm
-    xorg.xrandr
-    xss-lock
-    networkmanagerapplet
-    alsa-utils
+    # Containers
+    docker
+    docker-compose
 
+    # DB tools
+    beekeeper-studio
+    mongodb-compass
+    usql
+
+    # Desktop apps
     google-chrome
     discord
     postman
     libreoffice
-    maim
-    flameshot
-    xclip
-    feh
-    pavucontrol
-    shared-mime-info
-    direnv
 
+    # Wayland utilities
+    grim
+    slurp
+    wl-clipboard
+    swaybg
+    pavucontrol
+    brightnessctl
+
+    # File manager
+    pcmanfm
+    shared-mime-info
+
+    # System
+    zoxide
     btop
     fastfetch
-    i3status-rust
   ];
 }

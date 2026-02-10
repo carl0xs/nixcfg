@@ -19,7 +19,7 @@
 
     # Workstation modules
     ./desktop.nix
-    ./i3
+    # ./i3
 
     # The old top-level modules directory
     # is now replaced by the new structure.
@@ -30,4 +30,5 @@
   networking.hostName = "notebook";
 
   virtualisation.docker.enable = true;
+	programs.hyprland.enable = true;
 }
