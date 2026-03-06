@@ -27,7 +27,7 @@
   ];
 
   # Override common hostname for this specific host
-  networking.hostName = "notebook";
+  networking.hostName = "lenovo";
 
   virtualisation.docker.enable = true;
 	programs.hyprland.enable = true;

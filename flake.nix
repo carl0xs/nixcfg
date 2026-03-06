@@ -25,21 +25,21 @@
       formatter.${system} = pkgs.nixpkgs-fmt;
 
       nixosConfigurations = {
-        notebook = nixpkgs.lib.nixosSystem {
+        lenovo = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = specialArgs;
           modules = [
             home-manager.nixosModules.home-manager
-            ./hosts/notebook/default.nix
-            ./hosts/notebook/hardware-configuration.nix
+            ./hosts/lenovo/default.nix
+            ./hosts/lenovo/hardware-configuration.nix
           ];
         };
 
-        homeserver = nixpkgs.lib.nixosSystem {
+        homelab = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./hosts/homeserver/default.nix
-            ./hosts/homeserver/hardware-configuration.nix
+            ./hosts/dell-server/default.nix
+            ./hosts/dell-server/hardware-configuration.nix
           ];
         };
       };
