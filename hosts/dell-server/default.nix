@@ -13,9 +13,6 @@
     ../../modules/server/docker.nix
     ../../modules/server/firewall.nix
     ../../modules/server/tailscale.nix
-    ../../modules/server/nginx.nix
-    ../../modules/server/phoenix-blog.nix
-    ../../modules/server/cloudflared.nix
   ];
 
   # Override common hostname for this specific host
