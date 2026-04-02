@@ -35,4 +35,4 @@ sudo nixos-rebuild switch --impure --flake .#homelab
 
 - [ ] Add macOS configuration using nix-darwin
 - [ ] Document common modules
-- [ ] Add more host configurations
+- [x] Add more host configurations

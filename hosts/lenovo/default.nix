@@ -6,7 +6,7 @@
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
     backupFileExtension = "hm-bak";
-    users.carlos = import ../../home/notebook/default.nix;
+    users.carlos = import ../../home/lenovo/default.nix;
   };
 
   imports = [
