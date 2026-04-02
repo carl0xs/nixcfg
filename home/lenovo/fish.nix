@@ -18,7 +18,7 @@
       gst = "git status";
       gps = "git push";
       gac = "git add . && git commit";
-      gcb = "git checkout branch -b";
+      gcb = "git checkout -b";
       glg = "git lg";
 			gco = "git checkout";
     };
