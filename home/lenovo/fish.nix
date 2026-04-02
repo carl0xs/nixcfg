@@ -15,6 +15,12 @@
 
     shellAliases = {
       purevim = "NVIM_APPNAME=purevim nvim";
+      gst = "git status";
+      gps = "git push";
+      gac = "git add . && git commit";
+      gcb = "git checkout branch -b";
+      glg = "git lg";
+			gco = "git checkout";
     };
 
     shellAbbrs = {
@@ -23,10 +29,6 @@
       pv = "purevim";
       pure = "purevim";
     };
-
-    shellInit = ''
-      source ~/.dotfiles/aliases/aliases
-    '';
 
     interactiveShellInit = ''
       set --global fish_color_autosuggestion brblack
@@ -75,7 +77,7 @@
         			'';
 
       nv = ''
-        set -l base_dir "$HOME/.config/nvim-labs"
+        set -l base_dir "$HOME/.config/anyvim"
         set -l nvim_dir "$HOME/.config/nvim"
         set -l nvim_backup "$HOME/.config/nvim.backup"
 
