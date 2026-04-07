@@ -17,6 +17,7 @@
       purevim = "NVIM_APPNAME=purevim nvim";
       gst = "git status";
       gps = "git push";
+      gpl = "git pull";
       gac = "git add . && git commit";
       gcb = "git checkout -b";
       glg = "git lg";

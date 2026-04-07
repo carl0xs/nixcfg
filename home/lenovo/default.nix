@@ -62,7 +62,7 @@
 
     # System
     zoxide
-    btop
+    htop
     fastfetch
   ];
 }
