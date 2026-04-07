@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 let
   gruvbox = {
@@ -78,7 +78,7 @@ in
           tooltip-format-disconnected = "Disconnected";
           interval = 3;
           spacing = 1;
-          on-click = "nm-connection-editor";
+          on-click = "kitty -e nmtui";
         };
 
         battery = {

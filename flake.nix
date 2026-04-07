@@ -6,13 +6,18 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixvim, niri, neovim-nightly-overlay }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -32,6 +37,11 @@
             home-manager.nixosModules.home-manager
             ./hosts/lenovo/default.nix
             ./hosts/lenovo/hardware-configuration.nix
+            {
+              home-manager.sharedModules = [
+                niri.homeModules.niri
+              ];
+            }
           ];
         };
 

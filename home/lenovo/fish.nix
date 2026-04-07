@@ -20,7 +20,7 @@
       gac = "git add . && git commit";
       gcb = "git checkout -b";
       glg = "git lg";
-			gco = "git checkout";
+      gco = "git checkout";
     };
 
     shellAbbrs = {

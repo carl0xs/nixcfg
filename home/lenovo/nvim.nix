@@ -2,12 +2,12 @@
 
 {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
   ];
 
   programs.nixvim = {
     enable = true;
-    package = pkgs.neovim-unwrapped;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
 
     extraPlugins = [
       (pkgs.vimUtils.buildVimPlugin {

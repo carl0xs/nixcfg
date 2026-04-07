@@ -4,7 +4,7 @@
   imports = [
     ./fish.nix
     ./git.nix
-    ./hyprland.nix
+    # ./hyprland.nix
     ./kitty.nix
     ./nvim.nix
     ./rofi.nix
