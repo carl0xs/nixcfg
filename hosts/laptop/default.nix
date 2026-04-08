@@ -6,7 +6,7 @@
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
     backupFileExtension = "hm-bak";
-    users.carlos = import ../../home/lenovo/default.nix;
+    users.carlos = import ../../home/laptop/default.nix;
   };
 
   imports = [
@@ -27,9 +27,8 @@
   ];
 
   # Override common hostname for this specific host
-  networking.hostName = "lenovo";
+  networking.hostName = "laptop";
 
   virtualisation.docker.enable = true;
-  # programs.hyprland.enable = true;
   programs.niri.enable = true;
 }

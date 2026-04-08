@@ -30,13 +30,13 @@
       formatter.${system} = pkgs.nixpkgs-fmt;
 
       nixosConfigurations = {
-        lenovo = nixpkgs.lib.nixosSystem {
+        laptop = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = specialArgs;
           modules = [
             home-manager.nixosModules.home-manager
-            ./hosts/lenovo/default.nix
-            ./hosts/lenovo/hardware-configuration.nix
+            ./hosts/laptop/default.nix
+            ./hosts/laptop/hardware-configuration.nix
             {
               home-manager.sharedModules = [
                 niri.homeModules.niri
@@ -48,8 +48,8 @@
         homelab = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./hosts/dell-server/default.nix
-            ./hosts/dell-server/hardware-configuration.nix
+            ./hosts/lab-server/default.nix
+            ./hosts/lab-server/hardware-configuration.nix
           ];
         };
       };

@@ -23,7 +23,7 @@ This approach ensures all my toolchains are portable and reproducible across any
 
 ### Notebook
 ```bash
-sudo nixos-rebuild switch --impure --flake .#lenovo
+sudo nixos-rebuild switch --impure --flake .#laptop
 ```
 
 ### Home Server
