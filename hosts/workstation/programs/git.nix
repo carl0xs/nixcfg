@@ -11,7 +11,7 @@
       st = "status --short";
     };
 
-    extraConfig = {
+    settings = {
       color.ui = true;
       core.editor = "nvim";
       pull.rebase = true;

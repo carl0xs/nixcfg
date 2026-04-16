@@ -15,7 +15,7 @@
 
     shellAliases = {
       purevim = "NVIM_APPNAME=purevim nvim";
-      gst = "git status";
+      gst = "git status --short";
       gps = "git push";
       gpl = "git pull";
       gac = "git add . && git commit";

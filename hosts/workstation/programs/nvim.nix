@@ -1,13 +1,11 @@
-{ inputs, pkgs, ... }:
+{ pkgs, lib, inputs, ... }:
 
 {
-  imports = [
-    inputs.nixvim.homeModules.nixvim
-  ];
-
   programs.nixvim = {
     enable = true;
-    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    # TODO: voltar para nightly quando o bug for corrigido
+    # package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
+    package = pkgs.neovim-unwrapped;
 
     extraPlugins = [
       (pkgs.vimUtils.buildVimPlugin {

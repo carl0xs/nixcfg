@@ -14,7 +14,10 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, nixvim, niri, neovim-nightly-overlay }@inputs:
@@ -30,26 +33,21 @@
       formatter.${system} = pkgs.nixpkgs-fmt;
 
       nixosConfigurations = {
-        laptop = nixpkgs.lib.nixosSystem {
+        workstation = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = specialArgs;
           modules = [
             home-manager.nixosModules.home-manager
-            ./hosts/laptop/default.nix
-            ./hosts/laptop/hardware-configuration.nix
-            {
-              home-manager.sharedModules = [
-                niri.homeModules.niri
-              ];
-            }
+            ./hosts/workstation/default.nix
+            ./hosts/workstation/hardware-configuration.nix
           ];
         };
 
         homelab = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./hosts/lab-server/default.nix
-            ./hosts/lab-server/hardware-configuration.nix
+            ./hosts/server/default.nix
+            ./hosts/server/hardware-configuration.nix
           ];
         };
       };
