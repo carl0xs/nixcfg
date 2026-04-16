@@ -10,11 +10,11 @@
   };
 
   networking.extraHosts = ''
-		127.0.0.1 local.conta.fintera.com.br
-		127.0.0.1 local.recebiveis.fintera.com.br
-		127.0.0.1 local.financeiro.fintera.com.br
-		127.0.0.1 local.faturamento.fintera.com.br
-	'';
+    		127.0.0.1 local.conta.fintera.com.br
+    		127.0.0.1 local.recebiveis.fintera.com.br
+    		127.0.0.1 local.financeiro.fintera.com.br
+    		127.0.0.1 local.faturamento.fintera.com.br
+    	'';
 
   fonts = {
     enableDefaultPackages = true;

@@ -23,10 +23,10 @@
         };
 
         startup = [
-        { command = "feh --bg-fill ~/.dotfiles/wallpaper/forest-foggy-misty-cloudy.png"; always = true; notification = false; }
-        { command = "i3-resurrect restore"; always = true; notification = false; }
-        { command = "xss-lock --transfer-sleep-lock -- i3lock --nofork"; always = false; notification = false; }
-        { command = "nm-applet"; always = false; notification = false; }
+          { command = "feh --bg-fill ~/.dotfiles/wallpaper/forest-foggy-misty-cloudy.png"; always = true; notification = false; }
+          { command = "i3-resurrect restore"; always = true; notification = false; }
+          { command = "xss-lock --transfer-sleep-lock -- i3lock --nofork"; always = false; notification = false; }
+          { command = "nm-applet"; always = false; notification = false; }
         ];
 
         keybindings = {
@@ -96,7 +96,7 @@
 
           "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%";
           "XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%";
-          "XF86AudioMute"        = "exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle";
+          "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle";
 
           "${modifier}+Shift+c" = "reload";
           "${modifier}+Shift+r" = "restart";
@@ -117,14 +117,14 @@
         floating.modifier = "Mod4";
 
         assigns = {
-          "2" = [ { class = "(?i)brave"; } ];
+          "2" = [{ class = "(?i)brave"; }];
         };
 
         bars = [
-        {
-          statusCommand = "i3status";
-          fonts.names = [ "monospace" ];
-        }
+          {
+            statusCommand = "i3status";
+            fonts.names = [ "monospace" ];
+          }
         ];
 
       };
@@ -135,7 +135,7 @@
 
   users.users.carlos.extraGroups = [
     "video"
-      "audio"
-      "networkmanager"
+    "audio"
+    "networkmanager"
   ];
 }
