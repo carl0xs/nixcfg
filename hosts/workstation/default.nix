@@ -15,6 +15,7 @@
   networking.hostName = "workstation";
 
   nixpkgs.config.allowUnfree = true;
+  virtualisation.docker.enable = true;
 
   home-manager = {
     useGlobalPkgs = true;

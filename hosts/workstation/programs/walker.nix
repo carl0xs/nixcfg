@@ -6,6 +6,38 @@
     libqalculate
   ];
 
+  systemd.user.services.walker = {
+    Unit = {
+      Description = "Walker application launcher (GApplication service)";
+      After = [ "graphical-session.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.walker}/bin/walker --gapplication-service";
+      Restart = "on-failure";
+      RestartSec = 3;
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
+
+  systemd.user.services.elephant = {
+    Unit = {
+      Description = "Elephant clipboard manager";
+      After = [ "graphical-session.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.elephant}/bin/elephant";
+      Restart = "on-failure";
+      RestartSec = 3;
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
+
   # Walker config
   home.file.".config/walker/config.toml".text = ''
     force_keyboard_focus = true

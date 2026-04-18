@@ -38,7 +38,6 @@
     zoxide
     htop
     fastfetch
-    tree-sitter-cli
     bash-language-server
   ];
 }

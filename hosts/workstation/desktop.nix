@@ -1,5 +1,4 @@
-{ config, pkgs, extraHostsFromEnv, ... }:
-
+{ pkgs, ... }:
 {
 
   # X Server
@@ -47,6 +46,7 @@
   # GUI Programs
   programs.firefox.enable = true;
   programs.nix-ld.enable = true;
+  programs.niri.enable = true;
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [

@@ -5,7 +5,7 @@
     enable = true;
     # TODO: voltar para nightly quando o bug for corrigido
     # package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
-    package = pkgs.neovim-unwrapped;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
 
     extraPlugins = [
       (pkgs.vimUtils.buildVimPlugin {
