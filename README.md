@@ -21,9 +21,9 @@ This approach ensures all my toolchains are portable and reproducible across any
 
 ## Usage
 
-### Notebook
+### Workstation
 ```bash
-sudo nixos-rebuild switch --impure --flake .#laptop
+sudo nixos-rebuild switch --impure --flake .#workstation
 ```
 
 ### Home Server

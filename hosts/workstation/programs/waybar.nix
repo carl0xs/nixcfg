@@ -18,7 +18,7 @@ in
         spacing = 0;
         height = 26;
 
-        modules-left = [ "hyprland/workspaces" ];
+        modules-left = [ "niri/workspaces" ];
         modules-center = [ "clock" ];
         modules-right = [
           "tray"
@@ -29,7 +29,7 @@ in
           "battery"
         ];
 
-        "hyprland/workspaces" = {
+        "niri/workspaces" = {
           on-click = "activate";
           format = "{icon}";
           format-icons = {
@@ -51,7 +51,6 @@ in
             "2" = [ ];
             "3" = [ ];
             "4" = [ ];
-            "5" = [ ];
           };
         };
 

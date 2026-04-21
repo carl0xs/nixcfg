@@ -39,5 +39,6 @@
     htop
     fastfetch
     bash-language-server
+    fuzzel
   ];
 }
