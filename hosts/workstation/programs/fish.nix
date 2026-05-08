@@ -78,7 +78,7 @@
         			'';
 
       nv = ''
-        set -l base_dir "$HOME/.config/anyvim"
+        set -l base_dir "$HOME/.config/configs.nvim"
         set -l nvim_dir "$HOME/.config/nvim"
         set -l nvim_backup "$HOME/.config/nvim.backup"
 
@@ -102,7 +102,7 @@
         echo "Applying new configuration..."
         rm -rf "$nvim_dir"
         mkdir -p "$nvim_dir"
-        rsync -a "$choice_dir"/ "$nvim_dir"/
+	rsync -rl "$choice_dir"/ "$nvim_dir"/
 
         echo "Now using: $choice"
       '';
