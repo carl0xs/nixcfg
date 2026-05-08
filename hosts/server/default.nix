@@ -2,8 +2,7 @@
 
 {
   imports = [
-    ./services/docker.nix
-    ./services/fireall.nix
+    ./services/firewall.nix
     ./services/tailscale.nix
 
     ../../common/default.nix
@@ -19,9 +18,11 @@
   boot.loader.grub.device = "/dev/sda";
 
   networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ ];
 
   virtualisation.docker.enable = true;
 
-  services.pihole.enable = true;
+  services.pihole = {
+    enable = true;
+    password = "admin";
+  };
 }
