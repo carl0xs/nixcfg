@@ -21,7 +21,7 @@
 
   virtualisation.docker.enable = true;
 
-  services.pihole = {
+  services.pihole-ftl = {
     enable = true;
     password = "admin";
   };
