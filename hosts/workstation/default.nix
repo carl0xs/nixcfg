@@ -3,10 +3,7 @@
 {
   imports = [
     # Common modules
-    ../../modules/common/default.nix
-    ../../modules/common/locale.nix
-    ../../modules/common/users.nix
-    ../../modules/common/ssh.nix
+    ../../common/default.nix
 
     # Workstation modules
     ./desktop.nix

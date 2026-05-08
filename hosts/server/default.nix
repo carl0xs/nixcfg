@@ -2,17 +2,11 @@
 
 {
   imports = [
+    ./services/docker.nix
+    ./services/fireall.nix
+    ./services/tailscale.nix
 
-    # Common modules
-    ../../modules/common/default.nix
-    ../../modules/common/locale.nix
-    ../../modules/common/users.nix
-    ../../modules/common/ssh.nix
-
-    # Server modules
-    ../../modules/server/docker.nix
-    ../../modules/server/firewall.nix
-    ../../modules/server/tailscale.nix
+    ../../common/default.nix
   ];
 
   # Override common hostname for this specific host
@@ -23,4 +17,11 @@
   boot.loader.efi.canTouchEfiVariables = false;
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
+
+  networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [ ];
+
+  virtualisation.docker.enable = true;
+
+  services.pihole.enable = true;
 }

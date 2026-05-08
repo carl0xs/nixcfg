@@ -1,6 +1,12 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [
+    ./locale.nix
+    ./ssh.nix
+    ./users.nix
+  ];
+
   # Bootloader
   # Defaults for UEFI machines; hosts can override (e.g., legacy BIOS).
   boot.loader.systemd-boot.enable = lib.mkDefault true;
