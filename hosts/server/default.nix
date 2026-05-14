@@ -3,6 +3,7 @@
 {
   imports = [
     ./services/tailscale.nix
+    ./services/pi-hole.nix
 
     ../../common/default.nix
   ];
