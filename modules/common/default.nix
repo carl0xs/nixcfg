@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports = [
@@ -19,8 +19,6 @@
 
   time.timeZone = "America/Sao_Paulo";
 
-  programs.fish.enable = true;
-
   environment.systemPackages = with pkgs; [
     wget
     git
@@ -29,6 +27,14 @@
     vim
     cmake
   ];
+
+	nixpkgs.config.allowUnfree = true;
+
+	nix.gc = {
+		automatic = true;
+		dates = "weekly";
+		options = "--delete-older-than 30d";
+	};
 
   system.stateVersion = "25.05";
 }

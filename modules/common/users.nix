@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
+  programs.fish.enable = true;
+
   users.users.carlos = {
     isNormalUser = true;
     description = "carlos";

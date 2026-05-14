@@ -1,9 +1,6 @@
 { pkgs, lib, ... }:
 
 {
-  imports = [
-    ./programs
-  ];
   home.username = "carlos";
   home.homeDirectory = "/home/carlos";
   home.stateVersion = "25.05";

@@ -2,12 +2,11 @@
 
 {
   imports = [
-    ./services/tailscale.nix
-    ./services/blog.nix
-    ./services/cloudflared.nix
-    ./services/pi-hole.nix
-
-    ../../common/default.nix
+    ../../modules/common/default.nix
+    ../../modules/tailscale/default.nix
+    ../../modules/blog/default.nix
+    ../../modules/cloudflared/default.nix
+    ../../modules/pi-hole/default.nix
   ];
 
   # Override common hostname for this specific host

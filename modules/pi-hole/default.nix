@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 
-{ 
+{
   services.pihole-ftl = {
     enable = true;
     openFirewallDNS = true;
