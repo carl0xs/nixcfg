@@ -46,8 +46,8 @@
         homelab = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./hosts/server/default.nix
-            ./hosts/server/hardware-configuration.nix
+            ./hosts/homelab/default.nix
+            ./hosts/homelab/hardware-configuration.nix
           ];
         };
       };

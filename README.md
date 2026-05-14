@@ -14,7 +14,7 @@ You can see my old configuration at [github.com/carl0xs/dotfiles](https://github
 
 With NixOS, I'm consolidating all my configurations in one place:
 - My personal notebook
-- My home server
+- My home lab
 - Future machines (including potential macOS setup using Nix)
 
 This approach ensures all my toolchains are portable and reproducible across any system.
@@ -26,7 +26,7 @@ This approach ensures all my toolchains are portable and reproducible across any
 sudo nixos-rebuild switch --impure --flake .#workstation
 ```
 
-### Home Server
+### Home Lab
 ```bash
 sudo nixos-rebuild switch --impure --flake .#homelab
 ```
