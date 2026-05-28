@@ -9,6 +9,8 @@
     terminal = "tmux-256color";
     plugins = with pkgs; [
       tmuxPlugins.cpu
+      tmuxPlugins.resurrect
+      tmuxPlugins.continuum
     ];
     extraConfig = ''
       			set-option -g set-clipboard on
