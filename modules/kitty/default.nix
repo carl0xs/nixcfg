@@ -737,8 +737,8 @@
       
       #: Color scheme {{{
       
-      foreground #ebdbb2
-      background #282828
+      # foreground #ebdbb2
+      # background #282828
       
       #: The foreground and background colors
       

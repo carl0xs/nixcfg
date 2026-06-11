@@ -22,6 +22,7 @@
       gcb = "git checkout -b";
       glg = "git lg";
       gco = "git checkout";
+      ls = "ls -lah";
     };
 
     shellAbbrs = {
@@ -73,38 +74,39 @@
       '';
 
       todos = ''
-        				set -l file_name (date "+%Y-%m-%d.md")
-        				nvim -p ~/.todos/$file_name
-        			'';
+                				set -l file_name (date "+%Y-%m-%d.md")
+        								set -l current_year (date "+%Y")
+                				nvim -p ~/notes/TODO/$current_year/$file_name
+                			'';
 
       nv = ''
-        set -l base_dir "$HOME/.config/configs.nvim"
-        set -l nvim_dir "$HOME/.config/nvim"
-        set -l nvim_backup "$HOME/.config/nvim.backup"
+                set -l base_dir "$HOME/.config/configs.nvim"
+                set -l nvim_dir "$HOME/.config/nvim"
+                set -l nvim_backup "$HOME/.config/nvim.backup"
 
-        set -l choice (ls -d $base_dir/*/ | xargs -n 1 basename | fzf --prompt="Choose configuration: " --height=20% --reverse)
+                set -l choice (ls -d $base_dir/*/ | xargs -n 1 basename | fzf --prompt="Choose configuration: " --height=20% --reverse)
 
-        if test -z "$choice"
-            echo "No configuration selected."
-            return 1
-        end
+                if test -z "$choice"
+                    echo "No configuration selected."
+                    return 1
+                end
 
-        set -l choice_dir "$base_dir/$choice"
-        echo "Selected: $choice"
+                set -l choice_dir "$base_dir/$choice"
+                echo "Selected: $choice"
 
-        if test -d "$nvim_dir"
-            echo "Creating backup at $nvim_backup"
-            rm -rf "$nvim_backup"
-            mkdir -p "$nvim_backup"
-            rsync -a --delete "$nvim_dir"/ "$nvim_backup"/
-        end
+                if test -d "$nvim_dir"
+                    echo "Creating backup at $nvim_backup"
+                    rm -rf "$nvim_backup"
+                    mkdir -p "$nvim_backup"
+                    rsync -a --delete "$nvim_dir"/ "$nvim_backup"/
+                end
 
-        echo "Applying new configuration..."
-        rm -rf "$nvim_dir"
-        mkdir -p "$nvim_dir"
-	rsync -rl "$choice_dir"/ "$nvim_dir"/
+                echo "Applying new configuration..."
+                rm -rf "$nvim_dir"
+                mkdir -p "$nvim_dir"
+        	rsync -rl "$choice_dir"/ "$nvim_dir"/
 
-        echo "Now using: $choice"
+                echo "Now using: $choice"
       '';
 
       __prompt_git_segment = ''

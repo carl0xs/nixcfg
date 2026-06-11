@@ -37,5 +37,8 @@
     fastfetch
     bash-language-server
     fuzzel
+		i3status
+		maim
+		xclip
   ];
 }

@@ -16,7 +16,7 @@
       ../rofi/default.nix
       ../tmux/default.nix
       ../walker/default.nix
-      ../waybar/default.nix
+      # ../waybar/default.nix
     ];
     users.carlos = import ../home-user/default.nix;
   };
