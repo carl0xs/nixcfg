@@ -37,7 +37,7 @@
     globals.mapleader = " ";
 
     keymaps = [
-      { key = "<leader>e"; action = "<cmd>Vex<CR>"; }
+      { key = "<leader>e"; action = "<cmd>Oil<CR>"; }
       { key = "<C-s>"; action = "<cmd>:w!<CR>"; }
 
       { key = "[b"; action = "<cmd>bprevious<CR>"; }
@@ -51,10 +51,16 @@
       { key = "<leader>ff"; action = "<cmd>FzfLua files<CR>"; }
       { key = "<leader>fg"; action = "<cmd>FzfLua grep_project<CR>"; }
       { key = "<leader>gs"; action = "<cmd>FzfLua git_status<CR>"; }
+
       { key = "<leader>gb"; action = "<cmd>Gitsigns toggle_current_line_blame<CR>"; }
-
-
       { key = "<leader>nh"; action = "<cmd>Gitsigns next_hunk<CR>"; }
+
+      { key = "<A-j>"; action = "<cmd>:m .+1<CR>=="; }
+      { key = "<A-j>"; action = "<cmd>:m .-2<CR>=="; }
+			{ key= "A-j"; action= ":m '>+1<CR>gv=gv"; mode= "v"; }
+			{ key= "A-k"; action= ":m '<-2<CR>gv=gv"; mode= "v"; }
+
+			{ key= "<leader>xx"; action= "<cmd>vim.diagnostic.setloclist<CR>"; }
     ];
 
     opts = {
@@ -79,6 +85,7 @@
 
     plugins = {
       diffview-nvim.enable = true;
+			oil.enable = true;
       gitsigns.enable = true;
       fzf-lua = {
         enable = true;
@@ -177,68 +184,7 @@
 
     extraConfigLua = ''
             require("gitlineage").setup()
-            local lsp = vim.lsp
-
-            local signs = {
-              Error = "✗",
-              Warn = "⚠",
-              Hint = "💡",
-              Info = "ℹ"
-            }
-
-            lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {
-              border = "rounded",
-            })
-
-            lsp.handlers["textDocument/signatureHelp"] = lsp.with(vim.lsp.handlers.signature_help, {
-              border = "rounded",
-            })
-
-            local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-            for _, server in pairs(vim.lsp.get_clients()) do
-              server.server_capabilities = vim.tbl_deep_extend('force', server.server_capabilities, capabilities)
-            end
-
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              pattern = "*.rb",
-              callback = function()
-                vim.lsp.buf.format({ async = false })
-              end,
-            })
-
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              pattern = "*.ex",
-              callback = function()
-                vim.lsp.buf.format({ async = false })
-              end,
-            })
-
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              pattern = "*.heex",
-              callback = function()
-                vim.lsp.buf.format({ async = false })
-              end,
-            })
-
-            vim.api.nvim_create_autocmd("FileType", {
-              pattern = "ruby",
-              callback = function()
-                vim.opt_local.tabstop = 2
-                vim.opt_local.shiftwidth = 2
-                vim.opt_local.expandtab = true
-              end,
-            })
-
-            vim.api.nvim_create_autocmd("FileType", {
-              pattern = "elixir",
-              callback = function()
-                vim.opt_local.tabstop = 2
-                vim.opt_local.shiftwidth = 2
-                vim.opt_local.expandtab = true
-              end,
-            })
-
+            require("oil").setup()
       			vim.opt.iskeyword:remove("S")
     '';
   };
