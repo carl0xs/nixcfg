@@ -3,19 +3,13 @@
 {
   imports = [
     ../../modules/common/default.nix
-    ../../modules/home/default.nix
+    ../../modules/home-manager/default.nix
+    ../../modules/desktop/default.nix
   ];
 
   networking.hostName = "workstation";
 
   virtualisation.docker.enable = true;
-
-  # X Server
-  services.xserver.enable = true;
-  services.xserver.xkb = {
-    layout = "br";
-    variant = "thinkpad";
-  };
 
   networking.extraHosts = ''
     127.0.0.1 local.conta.fintera.com.br
@@ -24,36 +18,7 @@
     127.0.0.1 local.faturamento.fintera.com.br
   '';
 
-  fonts = {
-    enableDefaultPackages = true;
-    packages = with pkgs; [
-      nerd-fonts.fira-code
-    ];
-  };
-
   nix.settings.trusted-users = [ "root" "carlos" ];
-
-  # Sound
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  # Printing
-  services.printing.enable = true;
-
-  # Compositor
-  services.picom.enable = true;
-
-  # GUI Programs
-  programs.firefox.enable = true;
-  programs.nix-ld.enable = true;
-  services.xserver.windowManager.i3.enable = true;
-  # programs.niri.enable = true;
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [

@@ -1,15 +1,6 @@
 { ... }:
 
 {
-  home.sessionPath = [
-    "$HOME/.npm-global/bin"
-    "$HOME/.local/share/pnpm"
-  ];
-
-  home.sessionVariables = {
-    PNPM_HOME = "$HOME/.local/share/pnpm";
-  };
-
   programs.fish = {
     enable = true;
 
