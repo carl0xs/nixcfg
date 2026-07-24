@@ -1,10 +1,8 @@
-{ pkgs, lib, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   programs.nixvim = {
     enable = true;
-    # TODO: voltar para nightly quando o bug for corrigido
-    # package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
     package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
 
     extraPlugins = [
@@ -56,11 +54,11 @@
       { key = "<leader>nh"; action = "<cmd>Gitsigns next_hunk<CR>"; }
 
       { key = "<A-j>"; action = "<cmd>:m .+1<CR>=="; }
-      { key = "<A-j>"; action = "<cmd>:m .-2<CR>=="; }
-			{ key= "A-j"; action= ":m '>+1<CR>gv=gv"; mode= "v"; }
-			{ key= "A-k"; action= ":m '<-2<CR>gv=gv"; mode= "v"; }
+      { key = "<A-k>"; action = "<cmd>:m .-2<CR>=="; }
+      { key = "A-j"; action = ":m '>+1<CR>gv=gv"; mode = "v"; }
+      { key = "A-k"; action = ":m '<-2<CR>gv=gv"; mode = "v"; }
 
-			{ key= "<leader>xx"; action= "<cmd>vim.diagnostic.setloclist<CR>"; }
+      { key = "<leader>xx"; action = "<cmd>vim.diagnostic.setloclist<CR>"; }
     ];
 
     opts = {
@@ -81,11 +79,11 @@
       termguicolors = true;
     };
 
-    colorschemes.gruvbox.enable = true;
+    # colorschemes.gruvbox.enable = true;
 
     plugins = {
       diffview-nvim.enable = true;
-			oil.enable = true;
+      oil.enable = true;
       gitsigns.enable = true;
       fzf-lua = {
         enable = true;
@@ -183,9 +181,30 @@
     };
 
     extraConfigLua = ''
-            require("gitlineage").setup()
-            require("oil").setup()
-      			vim.opt.iskeyword:remove("S")
-    '';
+      						require("gitlineage").setup()
+      						require("oil").setup({
+      							columns = {
+      								"permissions", 
+      								"size", 
+      								"mtime"
+      							},
+      							skip_confirm_for_simple_edits = true
+      						})
+      						local capabilities = vim.lsp.protocol.make_client_capabilities()
+      						capabilities.textDocument.completion.completionItem.snippetSupport = true
+      						vim.lsp.config("emmet_ls", {
+      								capabilities = capabilities,
+      								filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+      								init_options = {
+      									html = {
+      										options = {
+      											["bem.enabled"] = true,
+      										},
+      									},
+      								}
+      						})
+
+      						vim.opt.iskeyword:remove("S")
+      						'';
   };
 }

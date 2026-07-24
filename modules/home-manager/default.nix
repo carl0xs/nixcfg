@@ -46,7 +46,7 @@
         htop
         fastfetch
         bash-language-server
-				ranger
+        ranger
       ];
     };
   };
