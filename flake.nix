@@ -47,7 +47,7 @@
         inherit inputs;
         extraHostsFromEnv = builtins.getEnv "EXTRA_HOSTS";
       };
-  		hostIp = builtins.getEnv "HOST_IP";
+      hostIp = builtins.getEnv "HOST_IP";
     in
     {
       formatter.${system} = pkgs.nixpkgs-fmt;
@@ -67,7 +67,9 @@
       nixosConfigurations = {
         workstation = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = specialArgs;
+          specialArgs = {
+            inherit inputs;
+          };
           modules = [
             home-manager.nixosModules.home-manager
             ./hosts/workstation/default.nix
@@ -77,6 +79,9 @@
 
         homelab = nixpkgs.lib.nixosSystem {
           inherit system;
+          specialArgs = {
+            inherit inputs;
+          };
           modules = [
             sops-nix.nixosModules.sops
             ./hosts/homelab/default.nix

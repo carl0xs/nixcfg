@@ -4,7 +4,7 @@
   imports = [
     ../../modules/common/default.nix
     ../../modules/tailscale/default.nix
-    ../../modules/blog/default.nix
+    # ../../modules/blog/default.nix
     ../../modules/cloudflared/default.nix
     ../../modules/pi-hole/default.nix
     ../../modules/znc/default.nix
@@ -20,6 +20,11 @@
   boot.loader.grub.device = "/dev/sda";
 
   networking.firewall.enable = true;
+
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+  };
 
   virtualisation.docker.enable = true;
 }
