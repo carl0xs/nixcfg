@@ -15,14 +15,8 @@
       extensions.force = true;
       extensions.packages =
         with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
-          ublock-origin
           dearrow
           vimium
-          privacy-badger
-          refined-github
-          stylus
-          wayback-machine
-          archivebox-exporter
           bitwarden
         ];
     };
