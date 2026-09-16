@@ -39,7 +39,7 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window'})
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window'})
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window'})
-vim.keymap.set('n', '<leader-q>',   ':bd<CR>', {})
+vim.keymap.set('n', '<leader>q',   ':bd<CR>', {})
 
 vim.keymap.set('n', '<leader>e', '<cmd>:Oil<CR>', {})
 
@@ -55,7 +55,7 @@ vim.keymap.set('n', '<A-k>', '<cmd>m .-2<CR>==', {})
 vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", {})
 vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", {})
 
-vim.keymap.set('n', '<leader>gb', ":Gisigns toggle_current_line_blame<CR>")
+vim.keymap.set('n', '<leader>gb', ":Gitsigns toggle_current_line_blame<CR>")
 
 -- Basic Autocommands
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -93,7 +93,7 @@ vim.pack.add {
   gh  'L3MON4D3/LuaSnip',
   gh  'saadparwaiz1/cmp_luasnip',
 }
--- vim.pack.add { gh('') }
+vim.pack.add { gh('MeanderingProgrammer/render-markdown.nvim') }
 
 require('fidget').setup {}
 require('oil').setup({
