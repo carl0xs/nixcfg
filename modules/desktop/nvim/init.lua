@@ -56,6 +56,9 @@ vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", {})
 vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", {})
 
 vim.keymap.set('n', '<leader>gb', ":Gitsigns toggle_current_line_blame<CR>")
+vim.keymap.set('n', '<leader>gB', ":Gitsigns blame<CR>")
+vim.keymap.set('n', ']c', ":Gitsigns next_hunk<CR>")
+vim.keymap.set('n', '[c', ":Gitsigns prev_hunk<CR>")
 
 -- Basic Autocommands
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -94,7 +97,9 @@ vim.pack.add {
   gh  'saadparwaiz1/cmp_luasnip',
 }
 vim.pack.add { gh('MeanderingProgrammer/render-markdown.nvim') }
+vim.pack.add { gh('emrearmagan/atlas.nvim')}
 
+require("atlas").setup {}
 require('fidget').setup {}
 require('oil').setup({
 	columns = {
