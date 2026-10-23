@@ -61,8 +61,8 @@
       };
 
       nixosConfigurations = {
+        inherit system;
         workstation = nixpkgs.lib.nixosSystem {
-          inherit system;
           specialArgs = specialArgs;
           modules = [
             home-manager.nixosModules.home-manager
