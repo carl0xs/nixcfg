@@ -18,8 +18,7 @@
         set $refresh_i3status killall -SIGUSR1 i3status-rs
 
         # Screenshots
-        bindsym Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
-        bindsym Control+Shift+s exec maim -s | xclip -selection clipboard -t image/png
+        bindsym Shift+Print exec spectacle
 
         floating_modifier $mod
 
@@ -105,6 +104,8 @@
         bindsym $mod+Shift+c reload
         bindsym $mod+Shift+r restart
         bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+        bindsym $mod+Shift+s sticky toggle
 
         # Resize
         mode "resize" {

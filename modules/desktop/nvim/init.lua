@@ -1,4 +1,5 @@
 vim.g.mapleader = " "
+
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.modifiable = true
@@ -16,6 +17,9 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldlevelstart = 99
 vim.opt.termguicolors = true
 vim.opt.updatetime = 300
+vim.opt.background = "dark"
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
 vim.o.number = true
 vim.o.mouse = "a"
 vim.o.undofile = true
@@ -28,9 +32,10 @@ vim.o.cursorline = true
 vim.o.relativenumber = true
 vim.o.path='**'
 vim.g.transparent_enabled = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 vim.cmd.colorscheme 'retrobox'
+
+vim.diagnostic.config({ signs = false})
 
 -- Basic keymaps 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -115,7 +120,7 @@ require('fzf-lua').setup({
 		width = 1.00,
 		row = 1.00,
 		col = 0.00,
-		border = "none",
+		border = "rounded",
 		fullscreen = false,
 	},
 	fzf_opts = {
@@ -380,10 +385,6 @@ vim.api.nvim_create_autocmd('FileType', {
 	end,
 })
 
-vim.diagnostic.config({ signs = false})
-vim.cmd [[
-  highlight Normal guibg=none
-  highlight NonText guibg=none
-  highlight Normal ctermbg=none
-  highlight NonText ctermbg=none
+vim.cmd [[ 
+  highlight Normal guibg=black
 ]]

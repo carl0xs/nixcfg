@@ -6,6 +6,8 @@
 
     shellAliases = {
       purevim = "NVIM_APPNAME=purevim nvim";
+
+      # git
       gst = "git status --short";
       gps = "git push";
       gpl = "git pull";
@@ -13,7 +15,9 @@
       gcb = "git checkout -b";
       glg = "git lg";
       gco = "git checkout";
+
       ls = "ls -lh";
+      docked = "docker exec -it";
     };
 
     shellAbbrs = {

@@ -19,5 +19,7 @@
     xclip
     feh
     weechat
+    anki
+    kdePackages.spectacle
   ];
 }
