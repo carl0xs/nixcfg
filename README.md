@@ -26,7 +26,7 @@ This approach ensures all my toolchains are portable and reproducible across any
 sudo nixos-rebuild switch --impure --flake .#workstation
 ```
 
-### Home Lab
+### Home Server
 ```bash
 sudo nixos-rebuild switch --impure --flake .#homelab
 ```
