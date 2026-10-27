@@ -47,6 +47,26 @@
   # Window Manager
   services.xserver.windowManager.i3.enable = true;
 
+  # Push notification
+  services.dunst = {
+    enable = true;
+
+    settings = {
+      global = {
+        monitor = 0;
+        follow = "mouse";
+        width = 350;
+        height = 300;
+        origin = "top-right";
+        offset = "10x10";
+        notification_limit = 5;
+        frame_width = 2;
+        font = "Monospace 10";
+        timeout = 5;
+      };
+    };
+  };
+
   # GUI Programs
   programs.nix-ld.enable = true;
   programs.steam.enable = true;
