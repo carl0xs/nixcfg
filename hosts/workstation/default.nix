@@ -7,19 +7,21 @@
     ../../modules/services/tailscale/default.nix
   ];
 
-  networking.hostName = "workstation";
 
   users.users.carlos.shell = pkgs.fish;
 
   virtualisation.docker.enable = true;
 
-  networking.extraHosts = ''
-    127.0.0.1 local.conta.fintera.com.br
-    127.0.0.1 local.recebiveis.fintera.com.br
-    127.0.0.1 local.financeiro.fintera.com.br
-    127.0.0.1 local.faturamento.fintera.com.br
-    127.0.0.1 local.analises.fintera.com.br
-  '';
+  networking = {
+    hostName = "workstation";
+    extraHosts = builtins.readFile "/etc/nixos/hosts.local";
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+      "8.8.8.8"
+      "8.8.4.4"
+    ];
+  };
 
   nix.settings.trusted-users = [ "root" "carlos" ];
 
