@@ -9,7 +9,7 @@
         exec_always --no-startup-id feh --bg-fill ~/repos/nixcfg/forest.jpg
 
         # font pango:monospace 8
-    		font pango:Iosevka 9
+    		font pango:Iosevka 11
 
         exec --no-startup-id i3-resurrect restore
         exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -106,6 +106,12 @@
         bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
         bindsym $mod+Shift+s sticky toggle
+
+        # Abrir post-its
+        bindsym $mod+n exec xpad
+
+        # Deixar as notas flutuantes e visíveis em todos os workspaces
+        for_window [class="Xpad"] floating enable, sticky enable
 
         # Resize
         mode "resize" {
