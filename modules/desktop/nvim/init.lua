@@ -416,3 +416,320 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.cmd [[ 
   highlight Normal guibg=black
 ]]
+--------------- CUSTOM THEME ---------------------------------
+local c = {
+  bg_dark    = "#101010",
+  bg         = "#181818",
+  bg1        = "#282828",
+  bg2        = "#453d41",
+  bg3        = "#484848",
+  bg4        = "#52494e",
+  fg         = "#e4e4ef",
+  fg1        = "#f4f4ff",
+  fg2        = "#f5f5f5",
+  white      = "#ffffff",
+  black      = "#000000",
+  red_dim    = "#c73c3f",
+  red        = "#f43841",
+  red_bright = "#ff4f58",
+  green      = "#73c936",
+  yellow     = "#ffdd33",
+  brown      = "#cc8c3c",
+  quartz     = "#95a99f",
+  niagara_d  = "#5f627f",
+  niagara    = "#96a6c8",
+  wisteria   = "#9e95c7",
+  none       = "NONE",
+}
+
+local config_hightlights = {
+  transparent = false,
+  italics = {
+    comments  = true,
+    keywords  = false,
+    functions = false,
+    strings   = false,
+    variables = false,
+  },
+}
+
+local function hi(group, opts)
+  vim.api.nvim_set_hl(0, group, opts)
+end
+
+hi("Normal",        { fg = c.fg,       bg = c.bg })
+hi("NormalFloat",   { fg = c.fg,       bg = c.bg1 })
+hi("NormalNC",      { fg = c.fg,       bg = c.bg })
+hi("EndOfBuffer",   { fg = c.bg1,      bg = c.none })
+hi("ColorColumn",   { bg = c.bg1 })
+hi("Conceal",       { fg = c.niagara_d })
+hi("Cursor",        { fg = c.bg,       bg = c.yellow })
+hi("CursorIM",      { fg = c.bg,       bg = c.yellow })
+hi("CursorColumn",  { bg = c.bg1 })
+hi("CursorLine",    { bg = c.bg1 })
+hi("CursorLineNr",  { fg = c.yellow,   bg = c.bg1,    bold = true })
+hi("Directory",     { fg = c.niagara })
+hi("DiffAdd",       { fg = c.green,    bg = c.bg1,    bold = true })
+hi("DiffChange",    { fg = c.yellow,   bg = c.bg1 })
+hi("DiffDelete",    { fg = c.red,      bg = c.bg1 })
+hi("DiffText",      { fg = c.yellow,   bg = c.bg2,    bold = true })
+hi("ErrorMsg",      { fg = c.red,      bg = c.bg,     bold = true })
+hi("WinSeparator",  { fg = c.bg4,      bg = c.bg })
+hi("VertSplit",     { fg = c.bg4,      bg = c.bg })
+hi("Folded",        { fg = c.brown,    bg = c.bg1 })
+hi("FoldColumn",    { fg = c.niagara_d, bg = c.bg })
+hi("SignColumn",    { fg = c.fg,       bg = c.bg })
+hi("LineNr",        { fg = c.bg4,      bg = c.bg })
+hi("MatchParen",    { fg = c.yellow,   bg = c.bg4,    bold = true })
+hi("ModeMsg",       { fg = c.yellow,   bold = true })
+hi("MoreMsg",       { fg = c.green,    bold = true })
+hi("NonText",       { fg = c.bg1 })
+hi("Pmenu",         { fg = c.fg,       bg = c.bg1 })
+hi("PmenuSel",      { fg = c.fg1,      bg = c.bg4 })
+hi("PmenuSbar",     { bg = c.bg2 })
+hi("PmenuThumb",    { bg = c.bg4 })
+hi("Question",      { fg = c.green })
+hi("QuickFixLine",  { fg = c.yellow,   bold = true })
+hi("Search",        { fg = c.bg,       bg = c.yellow })
+hi("IncSearch",     { fg = c.bg,       bg = c.red_bright, bold = true })
+hi("CurSearch",     { fg = c.bg,       bg = c.red_bright, bold = true })
+hi("SpecialKey",    { fg = c.niagara_d })
+hi("SpellBad",      { undercurl = true, sp = c.red })
+hi("SpellCap",      { undercurl = true, sp = c.yellow })
+hi("SpellLocal",    { undercurl = true, sp = c.green })
+hi("SpellRare",     { undercurl = true, sp = c.wisteria })
+hi("StatusLine",    { fg = c.fg,       bg = c.bg1 })
+hi("StatusLineNC",  { fg = c.bg4,      bg = c.bg1 })
+hi("Substitute",    { fg = c.bg,       bg = c.yellow })
+hi("TabLine",       { fg = c.fg,       bg = c.bg1 })
+hi("TabLineFill",   { bg = c.bg_dark })
+hi("TabLineSel",    { fg = c.yellow,   bg = c.bg,     bold = true })
+hi("Title",         { fg = c.yellow,   bold = true })
+hi("Visual",        { bg = c.bg4 })
+hi("VisualNOS",     { bg = c.bg4 })
+hi("WarningMsg",    { fg = c.yellow })
+hi("Whitespace",    { fg = c.bg1 })
+hi("WildMenu",      { fg = c.yellow,   bg = c.bg2,    bold = true })
+hi("WinBar",        { fg = c.fg,       bg = c.bg1 })
+hi("WinBarNC",      { fg = c.bg4,      bg = c.bg1 })
+
+-- ── Syntax (classic highlight groups) ──────────────────────────────
+hi("Comment",       { fg = c.brown,    italic = config_hightlights.italics.comments })
+hi("Constant",      { fg = c.wisteria })
+hi("String",        { fg = c.green })
+hi("Character",     { fg = c.green })
+hi("Number",        { fg = c.wisteria })
+hi("Boolean",       { fg = c.yellow,   bold = true })
+hi("Float",         { fg = c.wisteria })
+hi("Identifier",    { fg = c.niagara })
+hi("Function",      { fg = c.quartz })
+hi("Statement",     { fg = c.yellow,   bold = true })
+hi("Conditional",   { fg = c.yellow,   bold = true })
+hi("Repeat",        { fg = c.yellow,   bold = true })
+hi("Label",         { fg = c.yellow,   bold = true })
+hi("Operator",      { fg = c.fg1 })
+hi("Keyword",       { fg = c.yellow,   bold = true })
+hi("Exception",     { fg = c.red_bright, bold = true })
+hi("PreProc",       { fg = c.quartz })
+hi("Include",       { fg = c.niagara })
+hi("Define",        { fg = c.niagara })
+hi("Macro",         { fg = c.quartz })
+hi("PreCondit",     { fg = c.quartz })
+hi("Type",          { fg = c.yellow,   bold = true })
+hi("StorageClass",  { fg = c.yellow,   bold = true })
+hi("Structure",     { fg = c.niagara })
+hi("Typedef",       { fg = c.yellow,   bold = true })
+hi("Special",       { fg = c.quartz })
+hi("SpecialChar",   { fg = c.green })
+hi("Tag",           { fg = c.yellow })
+hi("Delimiter",     { fg = c.fg })
+hi("SpecialComment",{ fg = c.brown,    bold = true })
+hi("Debug",         { fg = c.red_bright })
+hi("Underlined",    { underline = true })
+hi("Ignore",        { fg = c.bg4 })
+hi("Error",         { fg = c.red,      bold = true })
+hi("Todo",          { fg = c.yellow,   bg = c.bg1,    bold = true, italic = true })
+
+-- ── Treesitter ─────────────────────────────────────────────────────
+hi("@variable",              { fg = c.fg })
+hi("@variable.builtin",      { fg = c.niagara })
+hi("@variable.parameter",    { fg = c.niagara })
+hi("@variable.member",       { fg = c.niagara })
+hi("@constant",              { fg = c.wisteria })
+hi("@constant.builtin",      { fg = c.yellow,   bold = true })
+hi("@constant.macro",        { fg = c.quartz })
+hi("@string",                { fg = c.green })
+hi("@string.escape",         { fg = c.quartz })
+hi("@string.special",        { fg = c.quartz })
+hi("@string.regexp",         { fg = c.quartz })
+hi("@character",             { fg = c.green })
+hi("@number",                { fg = c.wisteria })
+hi("@number.float",          { fg = c.wisteria })
+hi("@boolean",               { fg = c.yellow,   bold = true })
+hi("@type",                  { fg = c.niagara })
+hi("@type.builtin",          { fg = c.yellow,   bold = true })
+hi("@type.qualifier",        { fg = c.yellow,   bold = true })
+hi("@type.definition",       { fg = c.niagara })
+hi("@function",              { fg = c.quartz })
+hi("@function.builtin",      { fg = c.yellow })
+hi("@function.macro",        { fg = c.quartz })
+hi("@function.method",       { fg = c.quartz })
+hi("@function.method.call",  { fg = c.quartz })
+hi("@constructor",           { fg = c.niagara })
+hi("@keyword",               { fg = c.yellow,   bold = true })
+hi("@keyword.function",      { fg = c.yellow,   bold = true })
+hi("@keyword.operator",      { fg = c.yellow,   bold = true })
+hi("@keyword.return",        { fg = c.yellow,   bold = true })
+hi("@keyword.import",        { fg = c.niagara })
+hi("@keyword.conditional",   { fg = c.yellow,   bold = true })
+hi("@keyword.repeat",        { fg = c.yellow,   bold = true })
+hi("@keyword.exception",     { fg = c.red_bright, bold = true })
+hi("@keyword.directive",     { fg = c.quartz })
+hi("@operator",              { fg = c.fg1 })
+hi("@punctuation.bracket",   { fg = c.fg })
+hi("@punctuation.delimiter", { fg = c.fg })
+hi("@punctuation.special",   { fg = c.quartz })
+hi("@comment",               { fg = c.brown,    italic = config_hightlights.italics.comments })
+hi("@comment.todo",          { fg = c.yellow,   bg = c.bg1, bold = true, italic = true })
+hi("@comment.error",         { fg = c.red,      bold = true })
+hi("@comment.warning",       { fg = c.yellow,   bold = true })
+hi("@comment.note",          { fg = c.niagara,  bold = true })
+hi("@label",                 { fg = c.yellow })
+hi("@namespace",             { fg = c.niagara })
+hi("@module",                { fg = c.niagara })
+hi("@attribute",             { fg = c.quartz })
+hi("@property",              { fg = c.niagara })
+hi("@field",                 { fg = c.niagara })
+hi("@tag",                   { fg = c.yellow })
+hi("@tag.attribute",         { fg = c.niagara })
+hi("@tag.delimiter",         { fg = c.fg })
+hi("@markup.strong",         { bold = true })
+hi("@markup.italic",         { italic = true })
+hi("@markup.underline",      { underline = true })
+hi("@markup.strikethrough",  { strikethrough = true })
+hi("@markup.heading",        { fg = c.yellow,   bold = true })
+hi("@markup.link",           { fg = c.niagara,  underline = true })
+hi("@markup.link.url",       { fg = c.green,    underline = true })
+hi("@markup.raw",            { fg = c.green })
+hi("@markup.list",           { fg = c.yellow })
+hi("@diff.plus",             { fg = c.green })
+hi("@diff.minus",            { fg = c.red })
+hi("@diff.delta",            { fg = c.yellow })
+
+-- ── LSP semantic tokens ────────────────────────────────────────────
+hi("@lsp.type.class",        { fg = c.niagara })
+hi("@lsp.type.decorator",    { fg = c.quartz })
+hi("@lsp.type.enum",         { fg = c.niagara })
+hi("@lsp.type.enumMember",   { fg = c.wisteria })
+hi("@lsp.type.function",     { fg = c.quartz })
+hi("@lsp.type.interface",    { fg = c.niagara })
+hi("@lsp.type.macro",        { fg = c.quartz })
+hi("@lsp.type.method",       { fg = c.quartz })
+hi("@lsp.type.namespace",    { fg = c.niagara })
+hi("@lsp.type.parameter",    { fg = c.niagara })
+hi("@lsp.type.property",     { fg = c.niagara })
+hi("@lsp.type.struct",       { fg = c.niagara })
+hi("@lsp.type.type",         { fg = c.niagara })
+hi("@lsp.type.typeParameter",{ fg = c.niagara, italic = true })
+hi("@lsp.type.variable",     { fg = c.fg })
+hi("@lsp.mod.deprecated",    { strikethrough = true })
+
+-- ── LSP diagnostics ────────────────────────────────────────────────
+hi("DiagnosticError",        { fg = c.red })
+hi("DiagnosticWarn",         { fg = c.yellow })
+hi("DiagnosticInfo",         { fg = c.niagara })
+hi("DiagnosticHint",         { fg = c.wisteria })
+hi("DiagnosticOk",           { fg = c.green })
+hi("DiagnosticVirtualTextError",  { fg = c.red,      italic = true })
+hi("DiagnosticVirtualTextWarn",   { fg = c.yellow,   italic = true })
+hi("DiagnosticVirtualTextInfo",   { fg = c.niagara,  italic = true })
+hi("DiagnosticVirtualTextHint",   { fg = c.wisteria, italic = true })
+hi("DiagnosticUnderlineError",    { undercurl = true, sp = c.red })
+hi("DiagnosticUnderlineWarn",     { undercurl = true, sp = c.yellow })
+hi("DiagnosticUnderlineInfo",     { undercurl = true, sp = c.niagara })
+hi("DiagnosticUnderlineHint",     { undercurl = true, sp = c.wisteria })
+hi("DiagnosticSignError",         { fg = c.red })
+hi("DiagnosticSignWarn",          { fg = c.yellow })
+hi("DiagnosticSignInfo",          { fg = c.niagara })
+hi("DiagnosticSignHint",          { fg = c.wisteria })
+hi("DiagnosticFloatingError",     { fg = c.red })
+hi("DiagnosticFloatingWarn",      { fg = c.yellow })
+hi("LspReferenceText",            { bg = c.bg2 })
+hi("LspReferenceRead",            { bg = c.bg2 })
+hi("LspReferenceWrite",           { bg = c.bg2,  bold = true })
+hi("LspInlayHint",                { fg = c.niagara_d, italic = true })
+hi("LspSignatureActiveParameter", { fg = c.yellow, bold = true })
+
+-- ── nvim-cmp ───────────────────────────────────────────────────────
+hi("CmpItemAbbr",          { fg = c.fg })
+hi("CmpItemAbbrMatch",     { fg = c.yellow,  bold = true })
+hi("CmpItemAbbrMatchFuzzy",{ fg = c.yellow })
+hi("CmpItemKind",          { fg = c.quartz })
+hi("CmpItemMenu",          { fg = c.brown,   italic = true })
+hi("CmpItemKindText",      { fg = c.fg })
+hi("CmpItemKindMethod",    { fg = c.quartz })
+hi("CmpItemKindFunction",  { fg = c.quartz })
+hi("CmpItemKindField",     { fg = c.niagara })
+hi("CmpItemKindVariable",  { fg = c.fg })
+hi("CmpItemKindClass",     { fg = c.niagara })
+hi("CmpItemKindInterface", { fg = c.niagara })
+hi("CmpItemKindModule",    { fg = c.niagara })
+hi("CmpItemKindProperty",  { fg = c.niagara })
+hi("CmpItemKindKeyword",   { fg = c.yellow,  bold = true })
+hi("CmpItemKindSnippet",   { fg = c.green })
+hi("CmpItemKindValue",     { fg = c.wisteria })
+hi("CmpItemKindEnum",      { fg = c.niagara })
+hi("CmpItemKindColor",     { fg = c.quartz })
+hi("CmpItemKindConstant",  { fg = c.wisteria })
+hi("CmpItemKindEnumMember",{ fg = c.wisteria })
+hi("CmpItemKindStruct",    { fg = c.niagara })
+hi("CmpItemKindEvent",     { fg = c.red_bright })
+hi("CmpItemKindOperator",  { fg = c.fg1 })
+hi("CmpItemKindTypeParameter", { fg = c.niagara })
+
+-- ── GitSigns ───────────────────────────────────────────────────────
+hi("GitSignsAdd",    { fg = c.green })
+hi("GitSignsChange", { fg = c.yellow })
+hi("GitSignsDelete", { fg = c.red })
+
+-- ── Indent-blankline ───────────────────────────────────────────────
+hi("IblIndent",     { fg = c.bg1 })
+hi("IblScope",      { fg = c.bg2 })
+
+-- ── Notify ─────────────────────────────────────────────────────────
+hi("NotifyERRORBorder", { fg = c.red })
+hi("NotifyWARNBorder",  { fg = c.yellow })
+hi("NotifyINFOBorder",  { fg = c.niagara })
+hi("NotifyDEBUGBorder", { fg = c.bg4 })
+hi("NotifyTRACEBorder", { fg = c.wisteria })
+hi("NotifyERRORIcon",   { fg = c.red })
+hi("NotifyWARNIcon",    { fg = c.yellow })
+hi("NotifyINFOIcon",    { fg = c.niagara })
+hi("NotifyERRORTitle",  { fg = c.red,      bold = true })
+hi("NotifyWARNTitle",   { fg = c.yellow,   bold = true })
+hi("NotifyINFOTitle",   { fg = c.niagara,  bold = true })
+
+-- ── Treesitter context ─────────────────────────────────────────────
+hi("TreesitterContext",       { bg = c.bg1 })
+hi("TreesitterContextBottom", { underline = true, sp = c.bg4 })
+
+-- ── Mason ──────────────────────────────────────────────────────────
+hi("MasonNormal",          { fg = c.fg,      bg = c.bg1 })
+hi("MasonHeader",          { fg = c.bg,      bg = c.yellow, bold = true })
+hi("MasonHeaderSecondary", { fg = c.bg,      bg = c.niagara, bold = true })
+hi("MasonHighlight",       { fg = c.yellow })
+hi("MasonHighlightSecondary", { fg = c.green })
+hi("MasonMuted",           { fg = c.bg4 })
+hi("MasonMutedBlock",      { fg = c.bg4,     bg = c.bg2 })
+
+-- ── Markdown (built-in) ────────────────────────────────────────────
+hi("markdownH1",        { fg = c.yellow,  bold = true })
+hi("markdownH2",        { fg = c.yellow,  bold = true })
+hi("markdownH3",        { fg = c.niagara, bold = true })
+hi("markdownH4",        { fg = c.niagara })
+hi("markdownCode",      { fg = c.green })
+hi("markdownCodeBlock", { fg = c.green })
+hi("markdownLink",      { fg = c.niagara, underline = true })
+hi("markdownUrl",       { fg = c.green,   underline = true })
+hi("markdownBold",      { bold = true })
+hi("markdownItalic",    { italic = true })
