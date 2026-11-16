@@ -103,8 +103,17 @@ vim.pack.add {
 }
 vim.pack.add { gh('MeanderingProgrammer/render-markdown.nvim') }
 vim.pack.add { gh('emrearmagan/atlas.nvim')}
+vim.pack.add {
+  gh 'ej-shafran/compile-mode.nvim',
+  gh 'nvim-lua/plenary.nvim'
+}
+vim.pack.add { gh('nvim-orgmode/orgmode')}
 
-require("atlas").setup {}
+require('orgmode').setup({
+  org_agenda_files = '~/orgfiles/**/*',
+  org_default_notes_file = '~/orgfiles/refile.org',
+})
+
 require('fidget').setup {}
 require('oil').setup({
 	columns = {
@@ -245,7 +254,26 @@ local servers = {
   bashls = {},
   rust_analyzer = {},
   -- rubocop = {},
-  -- ruby_lsp = {},
+  solargraph = {
+    cmd = {
+      'env',
+      '-u', 'GEM_PATH',
+      '-u', 'RUBYLIB',
+      'bundle',
+      'exec',
+      'solargraph',
+      'stdio',
+    },
+    filetypes = { 'ruby' },
+    root_dir = function(bufnr, on_dir)
+      local fname = vim.api.nvim_buf_get_name(bufnr)
+      local matches = vim.fs.find({ 'Gemfile' }, { upward = true, limit = 2, path = fname })
+      local child_or_root_path, maybe_umbrella_path = unpack(matches)
+      local root_dir = vim.fs.dirname(maybe_umbrella_path or child_or_root_path)
+
+      on_dir(root_dir)
+    end,
+  },
   cssls = {},
   elixirls = {
     cmd = { 'elixir-ls' },
