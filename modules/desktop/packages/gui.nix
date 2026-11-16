@@ -21,5 +21,6 @@
     weechat
     anki
     kdePackages.spectacle
+    xpad
   ];
 }
