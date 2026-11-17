@@ -13,7 +13,7 @@
   virtualisation.docker.enable = true;
 
   networking = {
-    hostName = "workstation";
+    hostName = "cavetroll";
     extraHosts = builtins.readFile "/etc/nixos/hosts.local";
     nameservers = [
       "1.1.1.1"

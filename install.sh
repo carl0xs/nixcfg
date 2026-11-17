@@ -1,2 +1,2 @@
-cp /etc/nixos/hardware-configuration.nix hosts/workstation/
-sudo nixos-rebuild switch --impure --flake .#workstation
+cp /etc/nixos/hardware-configuration.nix hosts/cavetroll/
+sudo nixos-rebuild switch --impure --flake .#cavetroll

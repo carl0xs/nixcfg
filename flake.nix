@@ -48,7 +48,7 @@
     {
       formatter.${system} = pkgs.nixpkgs-fmt;
 
-      deploy.nodes.homelab = {
+      deploy.nodes.onering = {
         hostname = hostIp;
 
         profiles.system = {
@@ -56,28 +56,28 @@
 
           path =
             deploy-rs.lib.${system}.activate.nixos
-              self.nixosConfigurations.homelab;
+              self.nixosConfigurations.onering;
         };
       };
 
       nixosConfigurations = {
         inherit system;
-        workstation = nixpkgs.lib.nixosSystem {
+        cavetroll = nixpkgs.lib.nixosSystem {
           specialArgs = specialArgs;
           modules = [
             home-manager.nixosModules.home-manager
-            ./hosts/workstation/default.nix
-            ./hosts/workstation/hardware-configuration.nix
+            ./hosts/cavetroll/default.nix
+            ./hosts/cavetroll/hardware-configuration.nix
           ];
         };
 
-        homelab = nixpkgs.lib.nixosSystem {
+        onering = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = specialArgs;
           modules = [
             sops-nix.nixosModules.sops
-            ./hosts/homelab/default.nix
-            ./hosts/homelab/hardware-configuration.nix
+            ./hosts/onering/default.nix
+            ./hosts/onering/hardware-configuration.nix
           ];
         };
       };
