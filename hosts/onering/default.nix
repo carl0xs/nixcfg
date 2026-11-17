@@ -12,7 +12,7 @@
   ];
 
   # Override common hostname for this specific host
-  networking.hostName = "homelab";
+  networking.hostName = "onering";
 
   # Legacy BIOS bootloader (most Dell 1st-gen i5 boxes are BIOS-only)
   boot.loader.systemd-boot.enable = false;
