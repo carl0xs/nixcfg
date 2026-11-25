@@ -12,7 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     purevim = {
-      url = "github:carl0xs/purevim/feat/native-explorer";
+      url = "github:carl0xs/purevim";
       flake = false;
     };
     neovim-nightly-overlay = {

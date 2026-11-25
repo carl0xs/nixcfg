@@ -211,16 +211,15 @@
     "purevim": {
       "flake": false,
       "locked": {
-        "lastModified": 1795626154,
+        "lastModified": 1795649615,
         "narHash": "sha256-Hh2ndBOvPKAKxOJ8N+A42HswsA9UEMx72c42SMTLDI0=",
         "owner": "carl0xs",
         "repo": "purevim",
-        "rev": "d3c682cb1bf7425c214de90e43d779bb336a70af",
+        "rev": "50d8aa87684320cf156fe3a9c875c8ba3d170b02",
         "type": "github"
       },
       "original": {
         "owner": "carl0xs",
-        "ref": "feat/native-explorer",
         "repo": "purevim",
         "type": "github"
       }
