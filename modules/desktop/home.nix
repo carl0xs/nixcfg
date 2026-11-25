@@ -8,7 +8,6 @@
     backupFileExtension = "hm-bak";
 
     sharedModules = [
-      inputs.nixvim.homeModules.nixvim
       ./packages/gui.nix
       ./packages/dev.nix
       ./fish.nix

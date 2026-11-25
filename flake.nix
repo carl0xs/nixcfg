@@ -11,9 +11,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+    purevim = {
+      url = "github:carl0xs/purevim/feat/native-explorer";
+      flake = false;
     };
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
@@ -29,7 +29,7 @@
     { self
     , nixpkgs
     , home-manager
-    , nixvim
+    , purevim
     , neovim-nightly-overlay
     , deploy-rs
     , sops-nix
