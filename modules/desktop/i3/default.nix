@@ -8,8 +8,7 @@
 
         exec_always --no-startup-id feh --bg-fill ~/repos/nixcfg/forest.jpg
 
-        # font pango:monospace 8
-    		font pango:Iosevka 11
+    		font pango:Iosevka 10
 
         exec --no-startup-id i3-resurrect restore
         exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
