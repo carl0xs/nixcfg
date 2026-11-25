@@ -10,7 +10,6 @@
     fzf
     curl
     rsync
-    bat
     lazygit
     direnv
     docker
@@ -23,5 +22,6 @@
     ranger
     gh
     tree-sitter
+    exercism
   ];
 }
