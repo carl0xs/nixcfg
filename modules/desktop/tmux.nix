@@ -41,33 +41,33 @@
 
             			# default statusbar colors
             			# but a shade darker to show remote
-            			set-option -g status-style "fg=#bdae93,bg=#1c1816"
+            			set-option -g status-style "fg=#e4e4ef,bg=#282828"
 
             			# default window title colors
-            			set-window-option -g window-status-style "fg=#bdae93,bg=default"
+            			set-window-option -g window-status-style "fg=#5f627f,bg=default"
 
             			# active window title colors
-            			set-window-option -g window-status-current-style "fg=#fabd2f,bg=default"
+            			set-window-option -g window-status-current-style "fg=#ffdd33,bg=default,bold"
 
             			# pane border
-            			set-option -g pane-border-style "fg=#3c3836"
-            			set-option -g pane-active-border-style "fg=#504945"
+            			set-option -g pane-border-style "fg=#52494e"
+            			set-option -g pane-active-border-style "fg=#96a6c8"
 
             			# message text
-            			set-option -g message-style "fg=#d5c4a1,bg=#3c3836"
+            			set-option -g message-style "fg=#e4e4ef,bg=#453d41"
 
             			# pane number display
-            			set-option -g display-panes-active-colour "#b8bb26"
-            			set-option -g display-panes-colour "#fabd2f"
+            			set-option -g display-panes-active-colour "#73c936"
+            			set-option -g display-panes-colour "#ffdd33"
 
             			# clock
-            			set-window-option -g clock-mode-colour "#b8bb26"
+            			set-window-option -g clock-mode-colour "#73c936"
 
             			# copy mode highligh
-            			set-window-option -g mode-style "fg=#bdae93,bg=#504945"
+            			set-window-option -g mode-style "fg=#e4e4ef,bg=#52494e"
 
             			# bell
-            			set-window-option -g window-status-bell-style "fg=#3c3836,bg=#fb4934"
+            			set-window-option -g window-status-bell-style "fg=#181818,bg=#f43841"
 
                   set -g automatic-rename on
                   set -g automatic-rename-format '#{b:pane_current_path}'
