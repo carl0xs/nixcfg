@@ -3,6 +3,7 @@
 {
   programs.fish = {
     enable = true;
+    generateCompletions = false;
 
     shellAliases = {
       purevim = "NVIM_APPNAME=purevim nvim";
